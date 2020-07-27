@@ -11,5 +11,5 @@ If you are trying to create a new PHP Composer library, whether it will be going
 * Easy to use to any framework or even a plain php file
 
 #### Unit tests
-`composer update` installs the vendor directory
+`composer update` installs the vendor directory   
 `./vendor/bin/phpunit` runs PHPUnit tests
