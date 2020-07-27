@@ -21,7 +21,7 @@ class SearchTest extends TestCase
   */
   public function testIsThereAnySyntaxError()
   {
-	$var = new Purencoool\Search;
+	$var = new Purencool\Search\Search;
 	$this->assertTrue(is_object($var));
 	unset($var);
   }
