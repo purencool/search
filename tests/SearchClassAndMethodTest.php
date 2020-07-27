@@ -11,32 +11,34 @@ use PHPUnit\Framework\TestCase;
 */
 class SearchClassAndMethodTest extends TestCase
 {
-	
+
   /**
-  * Just check if the YourClass has no syntax error 
-  *
-  * This is just a simple check to make sure your library has no syntax error. This helps you troubleshoot
-  * any typo before you even use this library in a real project.
-  *
+   * Test to see if the class is implementing the SearchInterface
+   */
+  public function testIfClassImplementsInterface(){
+    $obj = new Purencool\Search\Search;
+    $interfaces = class_implements($obj);
+    $this->assertTrue(isset($interfaces['SearchInterface']));
+  }
+
+  /**
+  * Tests the Class has no syntax errors when instantiated into an object
   */
   public function testIsThereAnySyntaxError()
   {
-	$var = new Purencool\Search\Search;
-	$this->assertTrue(is_object($var));
-	unset($var);
+	$obj = new Purencool\Search\Search;
+	$this->assertTrue(is_object($obj));
+	unset($obj);
   }
-  
+
+
   /**
-  * Just check if the YourClass has no syntax error 
-  *
-  * This is just a simple check to make sure your library has no syntax error. This helps you troubleshoot
-  * any typo before you even use this library in a real project.
-  *
-  */
-  public function testMethod1()
+   * Test to see if the Class has a getSearchResults() method that accepts and array
+   */
+  public function testGetSearchResults()
   {
-	$var = new Purencool\Search\Search;
-	$this->assertTrue($var->method1("hey") == 'Hello World');
-	unset($var);
+	$obj = new Purencool\Search\Search;
+	$this->assertTrue(is_array($obj->getSearchResults([])));
+	unset($obj);
   } 
 }
