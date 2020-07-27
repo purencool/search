@@ -1,0 +1,31 @@
+{
+    "name": "purencool/search",
+    "description": "PHP Search",
+    "keywords": ["template", "composer", "package"],
+    "license": "GPL-3.0",
+    "authors": [
+        {
+            "name": "Purencool",
+            "email": "purencool@gmail.com"
+        }
+    ],
+    "type": "project",
+    "require": {
+		"php": "*"
+    },
+    "require-dev": {
+		"phpunit/phpunit": "7.*"
+    },
+
+
+    "autoload": {
+        "psr-4": {
+            "Purencool\\Search\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Purencool\\Search\\": "tests"
+        }
+    }
+}
