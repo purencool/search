@@ -20,12 +20,7 @@
 
     "autoload": {
         "psr-4": {
-            "Purencool\\Search\\": "src"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Purencool\\Search\\": "tests"
+            "Purencool\\": "src"
         }
     }
 }
