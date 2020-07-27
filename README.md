@@ -13,3 +13,8 @@ If you are trying to create a new PHP Composer library, whether it will be going
 #### Unit tests
 `composer update` installs the vendor directory   
 `./vendor/bin/phpunit` runs PHPUnit tests
+
+
+
+#### Contributors
+Thanks to [sielver](https://github.com/sielver) for fixing the Namespacing issue
