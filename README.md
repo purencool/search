@@ -15,6 +15,11 @@ If you are trying to create a new PHP Composer library, whether it will be going
 `./vendor/bin/phpunit` runs PHPUnit tests
 
 
+#### Troubleshooting
+If the tests are not working run the command below.
+`composer dump-autoload` 
+
+
 
 #### Contributors
 Thanks to [sielver](https://github.com/sielver) for fixing the Namespacing issue
