@@ -35,7 +35,7 @@ class SearchTest extends TestCase
   */
   public function testMethod1()
   {
-	$var = new Buonzz\Search\Search;
+	$var = new Purencool\Search\Search;
 	$this->assertTrue($var->method1("hey") == 'Hello World');
 	unset($var);
   } 
