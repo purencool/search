@@ -18,8 +18,21 @@ class SearchClassAndMethodTest extends TestCase
   public function testIfClassImplementsInterface(){
     $obj = new Purencool\Search\Search;
     $interfaces = class_implements($obj);
-    $this->assertTrue(isset($interfaces['SearchInterface']));
+    $this->assertTrue(isset($interfaces['Purencool\Search\SearchInterface']));
+    unset($obj);
   }
+
+
+  /**
+   * Test to see if the class is implementing the SearchAbstract
+   */
+  public function testIfClassExtendsAbstract(){
+    $obj = new Purencool\Search\Search;
+    $interfaces = class_parents($obj);
+    $this->assertTrue(isset($interfaces['Purencool\Search\SearchAbstract']));
+    unset($obj);
+  }
+
 
   /**
   * Tests the Class has no syntax errors when instantiated into an object
