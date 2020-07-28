@@ -59,4 +59,17 @@ class SearchGetters extends Search
     return $this->attachToSearchReply($arr);
   }
 
+  /**
+   * @return array
+   */
+  public function getParams() : array {
+    return $this->param;
+  }
+
+  /**
+   * @param $arr
+   */
+  public function setParams($arr) {
+     $this->param = $arr;
+  }
 }
