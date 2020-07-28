@@ -70,4 +70,14 @@ class SearchGettersClassAndMethodTest extends TestCase
     unset($obj);
   }
 
+
+  public function testGetAttachToSearchReply()
+  {
+    $obj = new Purencool\Search\SearchGetters();
+    $this->assertTrue(is_array($obj->getAttachToSearchReply([])));
+    unset($obj);
+  }
+
+
+
 }

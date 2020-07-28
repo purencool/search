@@ -51,7 +51,7 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   protected function attachToSearchReply($arr) : array
   {
-    return ''; //['attachToSearchReply'];
+    return ['attachToSearchReply'];
   }
 
   /**
