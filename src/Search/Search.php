@@ -4,12 +4,9 @@ namespace Purencool\Search;
 
 
 /**
-*  A sample class
+*  Search
 *
-*  Use this section to define what this class is doing, the PHPDocumentator will use this
-*  to automatically generate an API documentation using this information.
-*
-*  @author yourname
+*  @author purencool
 */
 class Search extends SearchAbstract implements SearchInterface {
 
@@ -27,7 +24,7 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   protected function checkElementIsArray($arr) : array
   {
-    return ['checkElementIsArray'];
+    return $arr;
   }
 
   /**
