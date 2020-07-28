@@ -52,6 +52,11 @@ class Search extends SearchAbstract implements SearchInterface {
     return ['attachToSearchReply'];
   }
 
+  public function getParams(): array
+  {
+    return $this->param;
+  }
+
   /**
    * @param array $searchArray
    * @param string $searchString

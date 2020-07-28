@@ -3,7 +3,7 @@
 
 namespace Purencool\Search;
 
-use phpDocumentor\Reflection\Types\Boolean;
+
 
 /**
  * This abstract class will set Search class structure
@@ -15,22 +15,42 @@ abstract class SearchAbstract
 {
 
   /**
+   * The use of the Param array is for so that
+   * any assumptions can be altered if needed
+   * by finding the array key and altering the
+   * element
+   *
    * @var array
    */
-  protected $param;
+  protected $param = [
+    'default' => 'default'
+    ];
 
   /**
    * SearchAbstract constructor.
    * @param array $param over rides default parameters.
    */
-  public function __construct(Array $param = ['type'=> 'default']) {
-    if($param['type'] !== 'default'){
-      //@todo match key and override string
-      $this->param = $param;
-    } else {
-      $this->param = $param;
+  public function __construct(Array $param = []) {
+    if(!empty($param)){
+     $this->paramAlter($param);
     }
+  }
 
+  /**
+   *  Matches Params keys and alters elements strings
+   *  if the keys do match
+   *
+   * @param $param
+   */
+  private function paramAlter($param)
+  {
+    foreach($param as $key => $value) {
+      foreach($this->param as $globalKey => $globalValue) {
+        if($key === $globalKey){
+          $this->param[$globalKey] = $value;
+        }
+      }
+    }
   }
 
 
@@ -41,6 +61,9 @@ abstract class SearchAbstract
   abstract protected function iteratingOverArray($arr) : array;
 
   /**
+   * Checks is the variable passed in is an array and has the
+   * needed functionality for the next step
+   *
    * @param $arr
    * @return bool
    */
@@ -63,4 +86,10 @@ abstract class SearchAbstract
    * @return array
    */
   abstract protected function attachToSearchReply($arr) : array;
+
+  /**
+   * Returns current parameters set inside the object
+   * @return array
+   */
+  abstract public function getParams() : array;
 }
