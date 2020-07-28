@@ -3,6 +3,8 @@
 
 namespace Purencool\Search;
 
+use phpDocumentor\Reflection\Types\Boolean;
+
 /**
  * This abstract class will set Search class structure
  *
@@ -40,9 +42,9 @@ abstract class SearchAbstract
 
   /**
    * @param $arr
-   * @return array
+   * @return bool
    */
-  abstract protected function checkElementIsArray($arr) : array;
+  abstract protected function checkElementIsArray($arr) : bool;
 
   /**
    * @param $string
