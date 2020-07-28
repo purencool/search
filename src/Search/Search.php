@@ -13,21 +13,54 @@ namespace Purencool\Search;
 */
 class Search extends SearchAbstract implements SearchInterface {
 
-   /**  @var string $m_SampleProperty define here what this variable is for, do this for every instance variable */
-   private $m_SampleProperty = '';
 
   /**
-  * Sample method
-  *
-  * Always create a corresponding docblock for each method, describing what it is for,
-  * this helps the phpdocumentator to properly generator the documentation
-  *
-  * @param string $param1 A string containing the parameter, do this for each parameter to the function, make sure to make it descriptive
-  *
-  * @return string
-  */
-   public function getSearchResults($param = []) : array
-   {
-			return [];
-   }
+   * @inheritDoc
+   */
+  protected function iteratingOverArray($arr)
+  {
+    // TODO: Implement iteratingOverArray() method.
+  }
+
+  /**
+   * @inheritDoc
+   */
+  protected function checkElementIsArray($arr)
+  {
+    // TODO: Implement checkElementIsArray() method.
+  }
+
+  /**
+   * @inheritDoc
+   */
+  protected function searchStringElement($string)
+  {
+    // TODO: Implement searchStringElement() method.
+  }
+
+  /**
+   * @inheritDoc
+   */
+  protected function trackKeyPath($arr)
+  {
+    // TODO: Implement trackKeyPath() method.
+  }
+
+  /**
+   * @inheritDoc
+   */
+  protected function attachToSearchReply($arr)
+  {
+    // TODO: Implement attachToSearchReply() method.
+  }
+
+  /**
+   * @param array $searchArray
+   * @param string $searchString
+   * @return array
+   */
+  public function getSearchResults($searchArray = [],$searchString = "") : array
+  {
+    return [];
+  }
 }

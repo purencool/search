@@ -78,7 +78,11 @@ class ClassAndMethodTest extends TestCase
   public function testGetSearchResults()
   {
 	  $obj = new Purencool\Search\Search;
-	  $this->assertTrue(is_array($obj->getSearchResults([])));
+	  $this->assertTrue(is_array($obj->getSearchResults([],'')));
 	  unset($obj);
   }
+
+  /**
+   * @todo write a test for the constructor
+   */
 }

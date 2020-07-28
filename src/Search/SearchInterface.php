@@ -14,8 +14,9 @@ interface SearchInterface
    * results in an array format from a method called
    * getSearchResults().
    *
-   * @param array $param
+   * @param array $searchArray
+   * @param string $searchString
    * @return array
    */
-  public function getSearchResults($param = []) : array;
+  public function getSearchResults($searchArray = [],$searchString = "") : array;
 }
