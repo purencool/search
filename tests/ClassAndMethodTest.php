@@ -58,6 +58,11 @@ class ClassAndMethodTest extends TestCase
   {
     $methodNamesArr = [
       'getSearchResults',
+      'iteratingOverArray',
+      'checkElementIsArray',
+      'searchStringElement',
+      'trackKeyPath',
+      'attachToSearchReply'
     ];
 
     $obj = new Purencool\Search\Search;
