@@ -25,9 +25,9 @@ class SearchGetters extends Search
 
   /**
    * @param $arr
-   * @return array
+   * @return bool
    */
-  public function getCheckElementIsArray($arr): array
+  public function getCheckElementIsArray($arr): bool
   {
     return $this->checkElementIsArray($arr);
   }

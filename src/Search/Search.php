@@ -22,9 +22,10 @@ class Search extends SearchAbstract implements SearchInterface {
   /**
    * @inheritDoc
    */
-  protected function checkElementIsArray($arr) : array
+  protected function checkElementIsArray($arr) : bool
   {
-    return $arr;
+
+    return is_array($arr);
   }
 
   /**

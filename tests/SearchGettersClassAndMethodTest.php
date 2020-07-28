@@ -50,7 +50,7 @@ class SearchGettersClassAndMethodTest extends TestCase
   public function testCheckElementIsArray()
   {
     $obj = new Purencool\Search\SearchGetters();
-    $this->assertTrue(is_array($obj->getCheckElementIsArray([])));
+    $this->assertTrue(is_bool($obj->getCheckElementIsArray([])));
     unset($obj);
   }
 
