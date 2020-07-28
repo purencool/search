@@ -78,6 +78,13 @@ class SearchGettersClassAndMethodTest extends TestCase
     unset($obj);
   }
 
-
+  public function testSetAndGetProtectedVariableParamMethods()
+  {
+    $obj = new Purencool\Search\SearchGetters();
+    $obj->setParams(['over write the params array']);
+    $result = $obj->getParams();
+    $this->assertTrue($result[0] === 'over write the params array');
+    unset($obj);
+  }
 
 }
