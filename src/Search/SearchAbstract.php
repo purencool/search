@@ -70,6 +70,21 @@ abstract class SearchAbstract
   abstract protected function checkElementIsArray($arr) : bool;
 
   /**
+   * The method needs be able to do the following confirm the following
+   * requests.
+   *
+   * Request
+   * 1. Does the request string exist in the array string element?
+   * 2. Does the request string exist partially?
+   * 3. Does the request string exist absolutely?
+   *
+   * Response
+   * 1. If the result does not exist the return value string should be empty
+   * 2. If the result is partial return a copy of that result
+   * 3. if the result is absolute return a copy of that result
+   *
+   * @todo there is not way at this time to differentiate between partial and absolute requests
+   *
    * @param $string
    * @return string
    */
