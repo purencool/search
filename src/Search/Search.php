@@ -17,9 +17,9 @@ class Search extends SearchAbstract implements SearchInterface {
   /**
    * @inheritDoc
    */
-  protected function iteratingOverArray($arr)
+  protected function iteratingOverArray($arr) : array
   {
-    // TODO: Implement iteratingOverArray() method.
+    return ['maksksk'];
   }
 
   /**

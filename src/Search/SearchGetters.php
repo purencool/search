@@ -4,63 +4,59 @@ namespace Purencool\Search;
 
 
 /**
-*  A sample class
-*
-*  Use this section to define what this class is doing, the PHPDocumentator will use this
-*  to automatically generate an API documentation using this information.
-*
-*  @author yourname
-*/
-class Search extends SearchAbstract implements SearchInterface {
-
-
-  /**
-   * @inheritDoc
-   */
-  protected function iteratingOverArray($arr)
-  {
-    // TODO: Implement iteratingOverArray() method.
-  }
+ *  SearchGetters
+ *
+ *  This class extends Search so that private methods
+ *  can be tested or used as example for others uses.
+ *
+ *  @author purencool
+ */
+class SearchGetters extends Search
+{
 
   /**
-   * @inheritDoc
-   */
-  protected function checkElementIsArray($arr)
-  {
-    // TODO: Implement checkElementIsArray() method.
-  }
-
-  /**
-   * @inheritDoc
-   */
-  protected function searchStringElement($string)
-  {
-    // TODO: Implement searchStringElement() method.
-  }
-
-  /**
-   * @inheritDoc
-   */
-  protected function trackKeyPath($arr)
-  {
-    // TODO: Implement trackKeyPath() method.
-  }
-
-  /**
-   * @inheritDoc
-   */
-  protected function attachToSearchReply($arr)
-  {
-    // TODO: Implement attachToSearchReply() method.
-  }
-
-  /**
-   * @param array $searchArray
-   * @param string $searchString
+   * @param $arr
    * @return array
    */
-  public function getSearchResults($searchArray = [],$searchString = "") : array
+  public function getIteratingOverArray($arr): array
   {
-    return [];
+    return $this->iteratingOverArray($arr);
   }
+
+  /**
+   * @param $arr
+   * @return array
+   */
+  public function getCheckElementIsArray($arr): array
+  {
+    return $this->checkElementIsArray($arr);
+  }
+
+  /**
+   * @param $arr
+   * @return array
+   */
+  public function getSearchStringElement($arr): array
+  {
+    return $this->searchStringElement($arr);
+  }
+
+  /**
+   * @param $arr
+   * @return array
+   */
+  public function getTrackKeyPath($arr): array
+  {
+    return $this->trackKeyPath($arr);
+  }
+
+  /**
+   * @param $arr
+   * @return array
+   */
+  public function getAttachToSearchReply($arr): array
+  {
+    return $this->attachToSearchReply($arr);
+  }
+
 }
