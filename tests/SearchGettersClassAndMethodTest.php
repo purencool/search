@@ -38,4 +38,36 @@ class SearchGettersClassAndMethodTest extends TestCase
   }
 
 
+
+  public function testGetIteratingOverArray()
+  {
+    $obj = new Purencool\Search\SearchGetters();
+    $this->assertTrue(is_array($obj->getIteratingOverArray([])));
+    unset($obj);
+  }
+
+
+  public function testCheckElementIsArray()
+  {
+    $obj = new Purencool\Search\SearchGetters();
+    $this->assertTrue(is_array($obj->getCheckElementIsArray([])));
+    unset($obj);
+  }
+
+
+  public function testGetSearchStringElement()
+  {
+    $obj = new Purencool\Search\SearchGetters();
+    $this->assertTrue(is_array($obj->getSearchStringElement([])));
+    unset($obj);
+  }
+
+
+  public function testGetTrackKeyPath()
+  {
+    $obj = new Purencool\Search\SearchGetters();
+    $this->assertTrue(is_array($obj->getTrackKeyPath([])));
+    unset($obj);
+  }
+
 }

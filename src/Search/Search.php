@@ -19,39 +19,39 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   protected function iteratingOverArray($arr) : array
   {
-    return ['maksksk'];
+    return ['iteratingOverArray'];
   }
 
   /**
    * @inheritDoc
    */
-  protected function checkElementIsArray($arr)
+  protected function checkElementIsArray($arr) : array
   {
-    // TODO: Implement checkElementIsArray() method.
+    return ['checkElementIsArray'];
   }
 
   /**
    * @inheritDoc
    */
-  protected function searchStringElement($string)
+  protected function searchStringElement($string) : array
   {
-    // TODO: Implement searchStringElement() method.
+    return ['searchStringElement'];
   }
 
   /**
    * @inheritDoc
    */
-  protected function trackKeyPath($arr)
+  protected function trackKeyPath($arr) : array
   {
-    // TODO: Implement trackKeyPath() method.
+    return ['trackKeyPath'];
   }
 
   /**
    * @inheritDoc
    */
-  protected function attachToSearchReply($arr)
+  protected function attachToSearchReply($arr) : array
   {
-    // TODO: Implement attachToSearchReply() method.
+    return ''; //['attachToSearchReply'];
   }
 
   /**
@@ -61,6 +61,6 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   public function getSearchResults($searchArray = [],$searchString = "") : array
   {
-    return [];
+    return ['getSearchResults'];
   }
 }
