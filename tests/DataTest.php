@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
  *
  *  @author Purencool
  */
-class SingleLevelArrayForStringTest extends TestCase
+class DataTest extends TestCase
 {
 
   /**
@@ -20,10 +20,12 @@ class SingleLevelArrayForStringTest extends TestCase
   /**
    * Check test data exists for these tests
    */
-  public function testDefaultData()
+  public function testData()
   {
-    $obj = Purencool\TestData\TestData::defaultData();
-    $this->assertTrue(is_array($obj));
+    $obj = new Purencool\TestData\TestData();
+    $this->assertTrue(is_string($obj::defaultString()));
+    $this->assertTrue(is_array($obj::defaultArray()));
+    $this->assertTrue(is_array($obj::defaultMultidimensionalArray()));
     unset($obj);
   }
 }
