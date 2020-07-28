@@ -82,7 +82,30 @@ class SearchClassAndMethodTest extends TestCase
 	  unset($obj);
   }
 
-  /**
-   * @todo write a test for the constructor
-   */
+  public function testAlteringProtectedVariableParamInConstructor()
+  {
+    // Default state
+    $obj = new Purencool\Search\Search();
+    $result = $obj->getParams();
+    $this->assertTrue($result['default'] === 'default');
+    unset($obj);
+
+    // If keys don't match global it nothing should change
+    $obj = new Purencool\Search\Search(['not_a_global_key' => 'The result should not change' ]);
+    $result = $obj->getParams();
+    $this->assertTrue($result['default'] === 'default');
+    unset($obj);
+
+    // If parameter has key it should change key element
+    $obj = new Purencool\Search\Search(['default' => 'This should change' ]);
+    $result = $obj->getParams();
+    $this->assertFalse($result['default'] === 'default');
+    unset($obj);
+
+    // If parameter has been changed it should return changed value
+    $obj = new Purencool\Search\Search(['default' => 'This should change' ]);
+    $result = $obj->getParams();
+    $this->assertTrue($result['default'] === 'This should change');
+    unset($obj);
+  }
 }
