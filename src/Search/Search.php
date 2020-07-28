@@ -33,9 +33,9 @@ class Search extends SearchAbstract implements SearchInterface {
   /**
    * @inheritDoc
    */
-  protected function searchStringElement($string) : array
+  protected function searchStringElement($string) : string
   {
-    return ['searchStringElement'];
+    return 'searchStringElement';
   }
 
   /**

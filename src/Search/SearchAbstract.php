@@ -36,29 +36,29 @@ abstract class SearchAbstract
    * @param $arr
    * @return array
    */
-  abstract protected function iteratingOverArray($arr);
+  abstract protected function iteratingOverArray($arr) : array;
 
   /**
    * @param $arr
    * @return array
    */
-  abstract protected function checkElementIsArray($arr);
+  abstract protected function checkElementIsArray($arr) : array;
 
   /**
    * @param $string
    * @return string
    */
-  abstract protected function searchStringElement($string);
+  abstract protected function searchStringElement($string) : string;
 
   /**
    * @param $arr
    * @return array
    */
-  abstract protected function trackKeyPath($arr);
+  abstract protected function trackKeyPath($arr) : array;
 
   /**
    * @param $arr
    * @return array
    */
-  abstract protected function attachToSearchReply($arr);
+  abstract protected function attachToSearchReply($arr) : array;
 }

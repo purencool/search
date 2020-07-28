@@ -33,12 +33,12 @@ class SearchGetters extends Search
   }
 
   /**
-   * @param $arr
-   * @return array
+   * @param $string
+   * @return string
    */
-  public function getSearchStringElement($arr): array
+  public function getSearchStringElement($string): string
   {
-    return $this->searchStringElement($arr);
+    return $this->searchStringElement($string);
   }
 
   /**

@@ -58,7 +58,7 @@ class SearchGettersClassAndMethodTest extends TestCase
   public function testGetSearchStringElement()
   {
     $obj = new Purencool\Search\SearchGetters();
-    $this->assertTrue(is_array($obj->getSearchStringElement([])));
+    $this->assertTrue(is_string($obj->getSearchStringElement('String test')));
     unset($obj);
   }
 
