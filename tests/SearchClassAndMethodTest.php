@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
  *
  *  @author Purencool
  */
-class ClassAndMethodTest extends TestCase
+class SearchClassAndMethodTest extends TestCase
 {
 
   /**
