@@ -22,5 +22,11 @@
         "psr-4": {
             "Purencool\\": "src"
         }
+    },
+
+    "autoload-dev": {
+        "psr-4": {
+            "Purencool\\": "tests"
+        }
     }
 }

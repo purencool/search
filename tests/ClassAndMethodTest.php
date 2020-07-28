@@ -6,8 +6,16 @@ use PHPUnit\Framework\TestCase;
  *
  *  @author Purencool
  */
-class SearchClassAndMethodTest extends TestCase
+class ClassAndMethodTest extends TestCase
 {
+
+  /**
+   * Check this class
+   */
+  public function testSearchClassAndMethodTest()
+  {
+    $this->assertTrue(is_string('testSearchClassAndMethodTest'));
+  }
 
   /**
    * Test to see if the class is implementing the SearchInterface
@@ -43,14 +51,29 @@ class SearchClassAndMethodTest extends TestCase
 	 unset($obj);
   }
 
+  /**
+   * Check if method exists
+   */
+  public function testObjectMethods()
+  {
+    $methodNamesArr = [
+      'getSearchResults',
+    ];
+
+    $obj = new Purencool\Search\Search;
+    foreach ($methodNamesArr as $methodNames ){
+      $this->assertTrue(method_exists($obj, $methodNames));
+    }
+    unset($obj);
+  }
 
   /**
-   * Test to see if the Class has a getSearchResults() method that accepts and array
+   * Test to see if the class has a getSearchResults() method that accepts and array
    */
   public function testGetSearchResults()
   {
-	$obj = new Purencool\Search\Search;
-	$this->assertTrue(is_array($obj->getSearchResults([])));
-	unset($obj);
-  } 
+	  $obj = new Purencool\Search\Search;
+	  $this->assertTrue(is_array($obj->getSearchResults([])));
+	  unset($obj);
+  }
 }
