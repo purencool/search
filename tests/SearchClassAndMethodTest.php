@@ -2,20 +2,18 @@
 use PHPUnit\Framework\TestCase;
 
 /**
-*  Corresponding Class to test YourClass class
-*
-*  For each class in your library, there should be a corresponding Unit-Test for it
-*  Unit-Tests should be as much as possible independent from other test going on.
-*
-*  @author Purencool
-*/
+ * Search class structure tests
+ *
+ *  @author Purencool
+ */
 class SearchClassAndMethodTest extends TestCase
 {
 
   /**
    * Test to see if the class is implementing the SearchInterface
    */
-  public function testIfClassImplementsInterface(){
+  public function testIfClassImplementsInterface()
+  {
     $obj = new Purencool\Search\Search;
     $interfaces = class_implements($obj);
     $this->assertTrue(isset($interfaces['Purencool\Search\SearchInterface']));
@@ -26,7 +24,8 @@ class SearchClassAndMethodTest extends TestCase
   /**
    * Test to see if the class is implementing the SearchAbstract
    */
-  public function testIfClassExtendsAbstract(){
+  public function testIfClassExtendsAbstract()
+  {
     $obj = new Purencool\Search\Search;
     $interfaces = class_parents($obj);
     $this->assertTrue(isset($interfaces['Purencool\Search\SearchAbstract']));
@@ -35,13 +34,13 @@ class SearchClassAndMethodTest extends TestCase
 
 
   /**
-  * Tests the Class has no syntax errors when instantiated into an object
-  */
+   * Tests the Class has no syntax errors when instantiated into an object
+   */
   public function testIsThereAnySyntaxError()
   {
-	$obj = new Purencool\Search\Search;
-	$this->assertTrue(is_object($obj));
-	unset($obj);
+	 $obj = new Purencool\Search\Search;
+	 $this->assertTrue(is_object($obj));
+	 unset($obj);
   }
 
 

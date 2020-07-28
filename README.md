@@ -1,7 +1,6 @@
-Composer Library Template
+Purencool Search
 =========================
 
-If you are trying to create a new PHP Composer library, whether it will be going to submitted to packagist.org or just in your Github account, this template of files will surely help you make the process a lot easier and faster.
 
 #### Features
 
@@ -10,13 +9,19 @@ If you are trying to create a new PHP Composer library, whether it will be going
 * Comprehensive Guides and tutorial
 * Easy to use to any framework or even a plain php file
 
+#### Installation
+
+
+#### How to use the library
+
+
 #### Unit tests
 `composer update` installs the vendor directory   
 `./vendor/bin/phpunit` runs PHPUnit tests
 
 
 #### Troubleshooting
-If the tests are not working run the command below.
+If the tests are not working run the command below.   
 `composer dump-autoload` 
 
 

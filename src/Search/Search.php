@@ -11,7 +11,7 @@ namespace Purencool\Search;
 *
 *  @author yourname
 */
-class Search {
+class Search extends SearchAbstract implements SearchInterface {
 
    /**  @var string $m_SampleProperty define here what this variable is for, do this for every instance variable */
    private $m_SampleProperty = '';
@@ -26,7 +26,8 @@ class Search {
   *
   * @return string
   */
-   public function method1($param1){
-			return "Hello World";
+   public function getSearchResults($param = []) : array
+   {
+			return [];
    }
 }
