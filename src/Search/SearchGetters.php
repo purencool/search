@@ -33,12 +33,16 @@ class SearchGetters extends Search
   }
 
   /**
-   * @param $string
+   * Allows access to searchStringElement
+   *
+   * @param string $request
+   * @param string $search
+   * @param string $type
    * @return string
    */
-  public function getSearchStringElement($string): string
+  public function getSearchStringElement($request, $search,$type = "partial"): string
   {
-    return $this->searchStringElement($string);
+    return $this->searchStringElement($request,$search, $type);
   }
 
   /**

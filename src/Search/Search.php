@@ -31,9 +31,23 @@ class Search extends SearchAbstract implements SearchInterface {
   /**
    * @inheritDoc
    */
-  protected function searchStringElement($string) : string
+  protected function searchStringElement($request, $search, $type = 'partial') : string
   {
-    return 'searchStringElement';
+
+    if($this->checkElementIsArray($search)){
+      return '';
+    }
+
+    if(stripos($search,$request) !== '' && $type == 'partial'){
+      return $request;
+    }
+
+    if(strpos($search,$request) !== '' && $type == 'absolute'){
+      return $request;
+    }
+
+    return '';
+
   }
 
   /**

@@ -83,12 +83,13 @@ abstract class SearchAbstract
    * 5. If the result is partial return a copy of that result
    * 6. if the result is absolute return a copy of that result
    *
-   * @todo there is not way at this time to differentiate between partial and absolute requests
    *
-   * @param $string
+   * @param $request String The request string that is to be found in $search
+   * @param $search  String A string that is being searched
+   * @param $type    String This is used to set the type of seach and it defaults to partial
    * @return string
    */
-  abstract protected function searchStringElement($string) : string;
+  abstract protected function searchStringElement($request, $search, $type = 'partial') : string;
 
   /**
    * @param $arr
