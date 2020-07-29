@@ -27,6 +27,14 @@ abstract class SearchAbstract
     ];
 
   /**
+   *  Used to store count for the iteratingOverArray()
+   *  method
+   *
+   * @var int
+   */
+  protected $iteratingOverArrayCount = 0;
+
+  /**
    * SearchAbstract constructor.
    * @param array $param over rides default parameters.
    */
@@ -55,10 +63,14 @@ abstract class SearchAbstract
 
 
   /**
+   * Iterates over multidimensional arrays using recursion and calls methods
+   * to build out a response with metadata for the requested response. Returns
+   * an INT with the amount of iterations completed.
+   *
    * @param $arr
-   * @return array
+   * @return int
    */
-  abstract protected function iteratingOverArray($arr) : array;
+  abstract protected function iteratingOverArray($arr) : int;
 
   /**
    * Checks is the variable passed in is an array and has the
