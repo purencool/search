@@ -74,14 +74,14 @@ abstract class SearchAbstract
    * requests.
    *
    * Request
-   * 1. Does the request string exist in the array string element?
-   * 2. Does the request string exist partially?
-   * 3. Does the request string exist absolutely?
+   * 1. Is request a string exist in the array string element?
+   * 2. The user needs to be able request a string that exist partially?
+   * 3. The user needs to be able request a string that exist absolutely?
    *
    * Response
-   * 1. If the result does not exist the return value string should be empty
-   * 2. If the result is partial return a copy of that result
-   * 3. if the result is absolute return a copy of that result
+   * 4. If the result does not exist the return value string should be empty
+   * 5. If the result is partial return a copy of that result
+   * 6. if the result is absolute return a copy of that result
    *
    * @todo there is not way at this time to differentiate between partial and absolute requests
    *

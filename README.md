@@ -4,7 +4,7 @@ Purencool Search
 
 #### Features
 
-* PSR-4 autoloading compliant structure
+* PSR-4 autoload compliant structure
 * Unit-Testing with PHPUnit
 * Comprehensive Guides and tutorial
 * Easy to use to any framework or even a plain php file
@@ -27,4 +27,4 @@ If the tests are not working run the command below.
 
 
 #### Contributors
-Thanks to [sielver](https://github.com/sielver) for fixing the Namespacing issue
+Thanks to [sielver](https://github.com/sielver) for fixing the Namespaces issue
