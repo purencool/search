@@ -8,20 +8,6 @@ use PHPUnit\Framework\TestCase;
  */
 class SearchSearchStringElementTest extends TestCase
 {
-  /**
-   * Tests need to complete the following requirements
-   *
-   * Request
-   * 1. Is request a string exist in the array string element?
-   * 2. The user needs to be able request a string that exist partially?
-   * 3. The user needs to be able request a string that exist absolutely?
-   *
-   * Response
-   * 4. If the result does not exist the return value string should be empty
-   * 5. If the result is partial return a copy of that result.
-   * 6. if the result is absolute return a copy of that result.
-   */
-
 
   /**
    * Check this class
@@ -45,7 +31,11 @@ class SearchSearchStringElementTest extends TestCase
   }
 
    /**
-    * 1. Is request a string exist in the array string element?
+    * @see \Purencool\Search\SearchAbstract::searchStringElement()
+    * @see \Purencool\Search\Search::searchStringElement()
+    *
+    * 1. Is request a string exist in the array string element
+    *
     */
   public function testRequestIsAString()
   {
@@ -57,8 +47,12 @@ class SearchSearchStringElementTest extends TestCase
   }
 
   /**
-   * 2. The user needs to be able request a string that exist partially?
-   * 5. If the result is partial return a copy of that result.
+   * @see \Purencool\Search\SearchAbstract::searchStringElement()
+   * @see \Purencool\Search\Search::searchStringElement()
+   *
+   * 2. The user needs to be able request a string that exist partially
+   * 5. If the result is partial return a copy of that result
+   *
    */
   public function testAPartialStringRequest()
   {
@@ -71,8 +65,12 @@ class SearchSearchStringElementTest extends TestCase
 
 
   /**
-   * 3. The user needs to be able request a string that exist absolutely?
-   * 6. if the result is absolute return a copy of that result.
+   * @see \Purencool\Search\SearchAbstract::searchStringElement()
+   * @see \Purencool\Search\Search::searchStringElement()
+   *
+   * 3. The user needs to be able request a string that exist absolutely
+   * 6. if the result is absolute return a copy of that result
+   *
    */
   public function testAAbsoluteStringRequest()
   {
@@ -84,7 +82,10 @@ class SearchSearchStringElementTest extends TestCase
   }
 
   /**
-   *  4. If the result does not exist the return value string should be empty.
+   * @see \Purencool\Search\SearchAbstract::searchStringElement()
+   * @see \Purencool\Search\Search::searchStringElement()
+   *
+   *  4. If the result does not exist the return value string should be empty
    */
   public function testResultDoesNotExist()
   {
@@ -94,4 +95,5 @@ class SearchSearchStringElementTest extends TestCase
     $this->assertTrue(($obj->getSearchStringElement('unusually',$testObj::defaultArray(), 'absolute') === ''));
     unset($obj);
   }
+
 }
