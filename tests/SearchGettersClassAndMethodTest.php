@@ -42,7 +42,7 @@ class SearchGettersClassAndMethodTest extends TestCase
   public function testGetIteratingOverArray()
   {
     $obj = new Purencool\Search\SearchGetters();
-    $this->assertTrue(is_array($obj->getIteratingOverArray([])));
+    $this->assertTrue(is_int($obj->getIteratingOverArray([])));
     unset($obj);
   }
 

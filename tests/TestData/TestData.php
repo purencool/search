@@ -41,21 +41,33 @@ class TestData
   public static function defaultMultidimensionalArray()
   {
     return [
-      'My data',
-      'My data number two',
-      'My data number three',
+      '0 My data',
+      '1 My data number two',
+      '2 My data number three',
       [
-        'My data number four level one',
-        'My data number five level one',
-        'My data number six level one',
+        '3 My data number four level one',
+        '4 My data number five level one',
+        '5 My data number six level one',
       ],
-      'My data number four',
-      'My data number five',
-      'My data number six',
+      '6 My data number four',
+      '7 My data number five',
+      '8 My data number six',
       [
-        'Second My data number four level one',
-        'Second My data number five level one',
-        'Second My data number six level one',
+        '9 Second My data number four level one',
+        '10 Second My data number five level one',
+        [
+          '11 Second My data number four level two',
+          '12  Second My data number five level two',
+          [
+            '13 Second My data number four level three',
+            '14 Second My data number five level three',
+            [
+              '15 Second My data number four level four',
+              '16 Second My data number five level four',
+            ],
+          ],
+        ],
+        '17 Second My data number six level one',
       ],
     ];
   }

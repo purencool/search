@@ -15,10 +15,12 @@ class SearchGetters extends Search
 {
 
   /**
+   * Returns the amount of iterations over the array in an INT.
+   *
    * @param $arr
-   * @return array
+   * @return int
    */
-  public function getIteratingOverArray($arr): array
+  public function getIteratingOverArray($arr): int
   {
     return $this->iteratingOverArray($arr);
   }

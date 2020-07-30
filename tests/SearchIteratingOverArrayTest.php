@@ -15,6 +15,12 @@ class SearchIteratingOverArrayTest extends TestCase
    */
   public function testSearchIteratingOverArrayTest ()
   {
+
+    //$obj = new Purencool\Search\Search();
+    //$testObj = new Purencool\TestData\TestData();
+    //print_r($obj->testing( $testObj::defaultMultidimensionalArray(),'iteration_count' )); exit;
+
+
     $this->assertTrue(is_string('testSearchIteratingOverArrayTest'));
   }
 
@@ -46,7 +52,7 @@ class SearchIteratingOverArrayTest extends TestCase
     $this->assertTrue(($obj->getIteratingOverArray($testObj::defaultArray()) == 6 ));
 
     // 12 elements in the array
-    $this->assertTrue(($obj->getIteratingOverArray($testObj::defaultMultidimensionalArray()) == 12 ));
+    $this->assertTrue(($obj->getIteratingOverArray($testObj::defaultMultidimensionalArray()) == 57));
 
     unset($obj);
   }

@@ -23,16 +23,17 @@ abstract class SearchAbstract
    * @var array
    */
   protected $param = [
-    'default' => 'default'
+    'default' => 'default',
+    'iterating_count_key' => 'iteration_count'
     ];
 
   /**
-   *  Used to store count for the iteratingOverArray()
+   *  Used to store result for the iteratingOverArray()
    *  method
    *
-   * @var int
+   * @var array
    */
-  protected $iteratingOverArrayCount = 0;
+  protected $iteratingOverArrayResult;
 
   /**
    * SearchAbstract constructor.
