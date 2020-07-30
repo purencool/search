@@ -2,12 +2,14 @@
 
 namespace Purencool\Search;
 
-
 /**
-*  Search
-*
-*  @author purencool
-*/
+ *  Search
+ *
+ * @author Purencool
+ * @license GPLV3
+ * @package Purencool\Search
+ *
+ */
 class Search extends SearchAbstract implements SearchInterface {
 
 
@@ -20,7 +22,7 @@ class Search extends SearchAbstract implements SearchInterface {
   private function arrayParsing($arr, array $results) : array
   {
     foreach($arr as $key => $value) {
-      if($this->checkElementIsArray($value)){
+      if(is_array($value)){
         $results[$key] = $this->arrayParsing($arr[$key], [ $this->param['iterating_count_key'] => 0 ]);
       } else {
         $results['element_data'][]= ['key' => $key, 'data' => $value];
@@ -28,6 +30,7 @@ class Search extends SearchAbstract implements SearchInterface {
 
       }
     }
+
     return $results;
   }
 
@@ -40,7 +43,7 @@ class Search extends SearchAbstract implements SearchInterface {
   {
     $resultsFinder = [];
     foreach($arr as $key => $value) {
-      if(!$this->checkElementIsArray($value)){
+      if(!is_array($value)){
         if($key == $find){
           $resultsFinder[$find]= $value;
         }
@@ -56,15 +59,12 @@ class Search extends SearchAbstract implements SearchInterface {
    * @param $array
    * @return array
    */
-  private function arrayFlatten($array){
-    if (!is_array($array)) {
-      return [$array];
-    }
-
-    $result = [];
-    foreach ($array as $value) {
-      $result = array_merge($result, $this->arrayFlatten($value));
-    }
+  private function arrayFlatten($array) : array
+  {
+     $result = [];
+     foreach ($array as $value) {
+        $result = array_merge($result, $this->arrayFlatten($value));
+     }
 
     return $result;
   }
@@ -75,22 +75,17 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   protected function iteratingOverArray($arr) : int
   {
+      if(!is_array($arr)){ return 0; }
 
-    $this->iteratingOverArrayResult = $this->arrayParsing($arr,[ $this->param['iterating_count_key'] => 0 ]);
-    $this->arrayKeyFindingResult = $this->arrayKeyFinding( $this->iteratingOverArrayResult ,$this->param['iterating_count_key']);
-    $this->arrayFlattenResult = $this->arrayFlatten($this->arrayKeyFindingResult);
+      $this->iteratingOverArrayResult = $this->arrayParsing($arr,[ $this->param['iterating_count_key'] => 0 ]);
+      $this->arrayKeyFindingResult = $this->arrayKeyFinding( $this->iteratingOverArrayResult ,$this->param['iterating_count_key']);
+      $this->arrayFlattenResult = $this->arrayFlatten($this->arrayKeyFindingResult);
 
-  //  print_r($this->iteratingOverArrayResult); exit;
-   // print_r($this->arrayKeyFindingResult); exit;
-   // print_r($this->arrayFlattenResult); exit;
-
-    $return = 0;
-    foreach ($this->arrayFlattenResult as $value){
-      $return = $return + $value;
-    }
-
-   // var_dump($return); exit;
-   return $return;
+      $return = 0;
+      foreach ($this->arrayFlattenResult as $value){
+        $return = $return + $value;
+      }
+    return $return;
 
   }
 
@@ -109,20 +104,15 @@ class Search extends SearchAbstract implements SearchInterface {
   protected function searchStringElement($request, $search, $type = 'partial') : string
   {
 
-    if($this->checkElementIsArray($search)){
+    if(is_array($search)){
       return '';
-    }
-
-    if(stripos($search,$request) !== '' && $type == 'partial'){
+    } elseif (stripos($search,$request) !== '' && $type == 'partial'){
       return $request;
-    }
-
-    if(strpos($search,$request) !== '' && $type == 'absolute'){
+    } elseif(strpos($search,$request) !== '' && $type == 'absolute'){
       return $request;
     }
 
     return '';
-
   }
 
   /**
@@ -141,6 +131,17 @@ class Search extends SearchAbstract implements SearchInterface {
     return ['attachToSearchReply'];
   }
 
+  protected function searchArrayForElement($request, $search, $meta = false): array
+  {
+    if(!is_array($search)){return []; };
+
+
+    return ['testing to see if it works'];
+  }
+
+  /**
+   * @inheritDoc
+   */
   public function getParams(): array
   {
     return $this->param;
@@ -158,4 +159,6 @@ class Search extends SearchAbstract implements SearchInterface {
     }
     return $this->iteratingOverArrayResult;
   }
+
+
 }
