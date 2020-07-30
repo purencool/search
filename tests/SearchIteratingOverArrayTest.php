@@ -16,9 +16,12 @@ class SearchIteratingOverArrayTest extends TestCase
   public function testSearchIteratingOverArrayTest ()
   {
 
-    //$obj = new Purencool\Search\Search();
-    //$testObj = new Purencool\TestData\TestData();
-    //print_r($obj->testing( $testObj::defaultMultidimensionalArray(),'iteration_count' )); exit;
+    $obj = new Purencool\Search\SearchGetters();
+    $testObj = new Purencool\TestData\TestData();
+    $result = $obj->getIteratingOverArray($testObj::defaultMultidimensionalArray());
+    print_r($result);
+    print_r($obj->iteratingOverArrayResult());
+    exit;
 
 
     $this->assertTrue(is_string('testSearchIteratingOverArrayTest'));

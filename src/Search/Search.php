@@ -12,20 +12,6 @@ class Search extends SearchAbstract implements SearchInterface {
 
 
   /**
-   * @example  current example
-     [sub] => Array
-       (
-         [iteration_count] => 3
-         [element_data] => Array
-          (
-            [0] => Array
-            (
-              [key] => 0
-              [data] => Second My data number four level one
-             )
-           )
-         )
-       )
    *
    *
    *
