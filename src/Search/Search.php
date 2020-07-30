@@ -45,7 +45,7 @@ class Search extends SearchAbstract implements SearchInterface {
           $resultsFinder[$find]= $value;
         }
       } else {
-        $resultsFinder['sub'][0] = $this->arrayKeyFinding($value, $find);
+        $resultsFinder[$key][0] = $this->arrayKeyFinding($arr[$key], $find);
       }
     }
 
@@ -80,15 +80,16 @@ class Search extends SearchAbstract implements SearchInterface {
     $this->arrayKeyFindingResult = $this->arrayKeyFinding( $this->iteratingOverArrayResult ,$this->param['iterating_count_key']);
     $this->arrayFlattenResult = $this->arrayFlatten($this->arrayKeyFindingResult);
 
-    print_r($this->iteratingOverArrayResult); exit;
-    print_r($this->arrayFlattenResult);
+  //  print_r($this->iteratingOverArrayResult); exit;
+   // print_r($this->arrayKeyFindingResult); exit;
+   // print_r($this->arrayFlattenResult); exit;
 
     $return = 0;
     foreach ($this->arrayFlattenResult as $value){
       $return = $return + $value;
     }
 
-    var_dump($return); exit;
+   // var_dump($return); exit;
    return $return;
 
   }

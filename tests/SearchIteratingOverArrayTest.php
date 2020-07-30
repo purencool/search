@@ -45,8 +45,8 @@ class SearchIteratingOverArrayTest extends TestCase
     // 6 elements in the array
     $this->assertTrue(($obj->getIteratingOverArray($testObj::defaultArray()) == 6 ));
 
-    // 15 elements in the array
-    $this->assertTrue(($obj->getIteratingOverArray($testObj::defaultMultidimensionalArray()) == 15));
+    // 18 elements in the array
+    $this->assertTrue(($obj->getIteratingOverArray($testObj::defaultMultidimensionalArray()) == 18));
 
     unset($obj);
   }
