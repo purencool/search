@@ -35,6 +35,24 @@ abstract class SearchAbstract
    */
   protected $iteratingOverArrayResult;
 
+
+  /**
+   *  Used to store result for the arrayKeyFinding()
+   *  method
+   *
+   * @var array
+   */
+  protected $arrayKeyFindingResult;
+
+  /**
+   *  Used to store result for the arrayFlatten()
+   *  method
+   *
+   * @var array
+   */
+   protected $arrayFlattenResult;
+
+
   /**
    * SearchAbstract constructor.
    * @param array $param over rides default parameters.

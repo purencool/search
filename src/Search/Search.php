@@ -13,8 +13,6 @@ class Search extends SearchAbstract implements SearchInterface {
 
   /**
    *
-   *
-   *
    * @param array $arr
    * @param  array $results
    * @return array
@@ -26,7 +24,7 @@ class Search extends SearchAbstract implements SearchInterface {
         $results['element_data'][]= ['key' => $key, 'data' => $value];
         $results['iteration_count']++;
       } else {
-        $results['sub'] = $this->arrayParsing($value, $results);
+        $results['sub'] = $this->arrayParsing($value, [ $this->param['iterating_count_key'] => 0 ]);
       }
     }
 
@@ -60,13 +58,11 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   private function arrayFlatten($array){
     if (!is_array($array)) {
-      // nothing to do if it's not an array
-      return array($array);
+      return [$array];
     }
 
-    $result = array();
+    $result = [];
     foreach ($array as $value) {
-      // explode the sub-array, and add the parts
       $result = array_merge($result, $this->arrayFlatten($value));
     }
 
@@ -81,13 +77,11 @@ class Search extends SearchAbstract implements SearchInterface {
   {
 
     $this->iteratingOverArrayResult = $this->arrayParsing($arr,[ $this->param['iterating_count_key'] => 0 ]);
-
-    $itemsInArray = $this->arrayFlatten(
-      $this->arrayKeyFinding( $this->iteratingOverArrayResult ,$this->param['iterating_count_key'])
-    );
+    $this->arrayKeyFindingResult = $this->arrayKeyFinding( $this->iteratingOverArrayResult ,$this->param['iterating_count_key']);
+    $this->arrayFlattenResult = $this->arrayFlatten($this->arrayKeyFindingResult);
 
     $return = 0;
-    foreach ($itemsInArray as $value){
+    foreach ($this->arrayFlattenResult as $value){
       $return = $return + $value;
     }
 

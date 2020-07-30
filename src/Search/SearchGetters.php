@@ -68,9 +68,25 @@ class SearchGetters extends Search
   /**
    * @return array
    */
-  public function iteratingOverArrayResult() : array {
+  public function getIteratingOverArrayResult() : array {
     return $this->iteratingOverArrayResult;
   }
+
+  /**
+   * @return array
+   */
+  public function getArrayKeyFindingResult() : array {
+    return $this->arrayKeyFindingResult;
+  }
+
+
+  /**
+   * @return array
+   */
+  public function getArrayFlattenResult() : array {
+    return $this->arrayFlattenResult;
+  }
+
 
   /**
    * @return array
