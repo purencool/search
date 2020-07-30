@@ -20,14 +20,14 @@ class Search extends SearchAbstract implements SearchInterface {
   private function arrayParsing($arr, array $results) : array
   {
     foreach($arr as $key => $value) {
-      if(!$this->checkElementIsArray($value)){
+      if($this->checkElementIsArray($value)){
+        $results[$key] = $this->arrayParsing($arr[$key], [ $this->param['iterating_count_key'] => 0 ]);
+      } else {
         $results['element_data'][]= ['key' => $key, 'data' => $value];
         $results['iteration_count']++;
-      } else {
-        $results['sub'] = $this->arrayParsing($value, [ $this->param['iterating_count_key'] => 0 ]);
+
       }
     }
-
     return $results;
   }
 
@@ -45,7 +45,7 @@ class Search extends SearchAbstract implements SearchInterface {
           $resultsFinder[$find]= $value;
         }
       } else {
-        $resultsFinder['sub'] = $this->arrayKeyFinding($value, $find);
+        $resultsFinder['sub'][0] = $this->arrayKeyFinding($value, $find);
       }
     }
 
@@ -80,11 +80,15 @@ class Search extends SearchAbstract implements SearchInterface {
     $this->arrayKeyFindingResult = $this->arrayKeyFinding( $this->iteratingOverArrayResult ,$this->param['iterating_count_key']);
     $this->arrayFlattenResult = $this->arrayFlatten($this->arrayKeyFindingResult);
 
+    print_r($this->iteratingOverArrayResult); exit;
+    print_r($this->arrayFlattenResult);
+
     $return = 0;
     foreach ($this->arrayFlattenResult as $value){
       $return = $return + $value;
     }
 
+    var_dump($return); exit;
    return $return;
 
   }
