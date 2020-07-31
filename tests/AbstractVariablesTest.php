@@ -23,7 +23,7 @@ class AbstractVariablesTest extends TestCase
     $testObj = new Purencool\TestData\TestData();
     $obj = new Purencool\Search\SearchGetters($testObj::defaultMultidimensionalArray());
 
-    $result = $obj->getIteratingOverArray($testObj::defaultMultidimensionalArray());
+    $result = $obj->getCountArrayItems($testObj::defaultMultidimensionalArray());
     // print_r($result);
     // print_r($obj->getSearchArrayParsed());
     // print_r($obj->getArrayFlattenResult());

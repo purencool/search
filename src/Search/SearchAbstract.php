@@ -40,7 +40,7 @@ abstract class SearchAbstract
 
 
   /**
-   *  Used to store result from the iteratingOverArray()
+   *  Used to store result from the countArrayItems()
    *  method
    *
    * @var array
@@ -144,10 +144,7 @@ abstract class SearchAbstract
    * @return int
    *
    */
-  abstract protected function iteratingOverArray($arr) : int;
-
-
-
+  abstract protected function countArrayItems($arr) : int;
 
 
   /**

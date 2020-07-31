@@ -23,7 +23,7 @@ class SearchGettersClassAndMethodTest extends TestCase
   public function testObjectMethods()
   {
     $methodNamesArr = [
-      'getIteratingOverArray',
+      'getCountArrayItems',
       'getSearchStringElement',
     ];
     $testObj = \Purencool\TestData\TestData::defaultArray();
@@ -36,11 +36,11 @@ class SearchGettersClassAndMethodTest extends TestCase
 
 
 
-  public function testGetIteratingOverArray()
+  public function testgetCountArrayItems()
   {
     $testObj = \Purencool\TestData\TestData::defaultArray();
     $obj = new Purencool\Search\SearchGetters($testObj);
-    $this->assertTrue(is_int($obj->getIteratingOverArray([])));
+    $this->assertTrue(is_int($obj->getCountArrayItems([])));
     unset($obj);
   }
 

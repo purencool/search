@@ -27,6 +27,7 @@ class Search extends SearchAbstract implements SearchInterface {
     $this->searchArrayInit($searchArray);
   }
 
+
   /**
    * @param string $tag
    */
@@ -46,11 +47,10 @@ class Search extends SearchAbstract implements SearchInterface {
   }
 
 
-
   /**
    * @inheritDoc
    */
-  protected function iteratingOverArray($arr) : int
+  protected function countArrayItems($arr) : int
   {
     if(!is_array($arr) || empty($arr)){ return 0; }
     $this->setTag('iteration_count');
@@ -82,7 +82,7 @@ class Search extends SearchAbstract implements SearchInterface {
     if(!is_array($search) || empty($search)){return []; };
 
     return [
-      'iterations_over_array' =>  $this->iteratingOverArray($search),
+      'iterations_over_array' =>  $this->countArrayItems($search),
       'items_found' =>   WorkerArrayStringFinder::find(
          $search,
          'number',

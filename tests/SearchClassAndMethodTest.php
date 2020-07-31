@@ -61,7 +61,7 @@ class SearchClassAndMethodTest extends TestCase
   {
     $methodNamesArr = [
       'getSearchResults',
-      'iteratingOverArray',
+      'countArrayItems',
       'searchStringElement',
     ];
 

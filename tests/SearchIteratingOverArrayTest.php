@@ -6,28 +6,28 @@ use PHPUnit\Framework\TestCase;
  *
  *  @author Purencool
  */
-class SearchIteratingOverArrayTest extends TestCase
+class SearchcountArrayItemsTest extends TestCase
 {
 
 
   /**
    * Check this class
    */
-  public function testSearchIteratingOverArrayTest ()
+  public function testSearchcountArrayItemsTest ()
   {
-    $this->assertTrue(is_string('testSearchIteratingOverArrayTest'));
+    $this->assertTrue(is_string('testSearchcountArrayItemsTest'));
   }
 
 
   /**
    * Check method
    */
-  public function testIteratingOverArray()
+  public function testcountArrayItems()
   {
 
     $testObj = Purencool\TestData\TestData::defaultArray();
     $obj = new Purencool\Search\SearchGetters($testObj);
-    $this->assertTrue(is_int($obj->getIteratingOverArray([])));
+    $this->assertTrue(is_int($obj->getCountArrayItems([])));
     unset($obj);
   }
 
@@ -44,18 +44,18 @@ class SearchIteratingOverArrayTest extends TestCase
 
     // 0 elements in the array
     $obj = new Purencool\Search\SearchGetters($testObj::defaultArray());
-    $this->assertTrue(($obj->getIteratingOverArray([]) == 0 ));
+    $this->assertTrue(($obj->getCountArrayItems([]) == 0 ));
     unset($obj);
 
     // 6 elements in the array
     $obj = new Purencool\Search\SearchGetters($testObj::defaultArray());
-    $this->assertTrue(($obj->getIteratingOverArray($testObj::defaultArray()) == 6 ));
+    $this->assertTrue(($obj->getCountArrayItems($testObj::defaultArray()) == 6 ));
     unset($obj);
 
 
     // 18 elements in the array
     $obj = new Purencool\Search\SearchGetters($testObj::defaultMultidimensionalArray());
-    $this->assertTrue(($obj->getIteratingOverArray($testObj::defaultMultidimensionalArray()) == 18));
+    $this->assertTrue(($obj->getCountArrayItems($testObj::defaultMultidimensionalArray()) == 18));
     unset($obj);
   }
 

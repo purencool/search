@@ -18,15 +18,15 @@ class SearchGetters extends Search
   /**
    * Returns the amount of iterations over the array in an INT.
    * @see \Purencool\Search\SearchAbstract::$searchArrayParsed
-   * @see \Purencool\Search\SearchAbstract::iteratingOverArray()
-   * @see \Purencool\Search\Search::iteratingOverArray()
+   * @see \Purencool\Search\SearchAbstract::countArrayItems()
+   * @see \Purencool\Search\Search::countArrayItems()
    *
    * @param $arr
    * @return int
    */
-  public function getIteratingOverArray($arr): int
+  public function getCountArrayItems($arr): int
   {
-    return $this->iteratingOverArray($arr);
+    return $this->countArrayItems($arr);
   }
 
 
@@ -64,8 +64,6 @@ class SearchGetters extends Search
   {
     return $this->searchArrayForElement($request,$search, $meta);
   }
-
-
 
 
   /**
