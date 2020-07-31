@@ -27,8 +27,6 @@ class WorkerArrayStringFinder
    */
   public static function find($param) : array
   {
-   //print_r($param); exit;
-
     $results = [];
     foreach($param['search_arr'] as $k => $v) {
       if(is_array($v)){
