@@ -15,21 +15,24 @@ class WorkerArrayStringFinder
 {
 
   /**
-   * @param $arr
-   * @param $searchString
-   * @param $tagKey
+   * @param $param = [
+   *   'arr',
+   *   'search',
+   *   'tag'
+   *  ];
+   *
    * @return array
    *
    */
-  public static function find($arr, $searchString,$tagKey) : array
+  public static function find($param) : array
   {
     $results = [];
-    foreach($arr as $k => $v) {
+    foreach($param['arr'] as $k => $v) {
       if(is_array($v)){
-        $results[$k] = self::find($arr[$k], $searchString, $tagKey);
+        $results[$k] = self::find([$param['arr'][$k], $param['search'], $param['tag']]);
       } else {
-        if(WorkerStringFinder::find($v,$searchString) != '') {
-          $results[][$tagKey] = $v;
+        if(WorkerStringFinder::find($v,$param['search']) != '') {
+          $results[][$param['tag']] = $v;
         }
       }
     }

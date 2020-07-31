@@ -36,14 +36,12 @@ class SearchGetters extends Search
    * @see \Purencool\Search\SearchAbstract::searchStringElement()
    * @see \Purencool\Search\Search::searchStringElement()
    *
-   * @param string $request
-   * @param string $search
-   * @param string $type
+   * @param array $param
    * @return string
    */
-  public function getSearchStringElement($request, $search,$type = "partial"): string
+  public function getSearchStringElement($param): string
   {
-    return $this->searchStringElement($request,$search, $type);
+    return $this->searchStringElement($param);
   }
 
 

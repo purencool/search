@@ -70,14 +70,19 @@ class Search extends SearchAbstract implements SearchInterface {
   /**
    * @inheritDoc
    */
-  protected function searchStringElement($request, $search, $type = 'partial' ) : string
+  protected function searchStringElement($param) : string
   {
-    return WorkerStringFinder::find($request, $search, $type);
+    if(!is_array($param) || empty($param)){ return ''; }
+    return WorkerStringFinder::find($param);
   }
 
 
-
-
+  /**
+   * @param string $request
+   * @param array $search
+   * @param false $meta
+   * @return array
+   */
   protected function searchArrayForElement($request, $search, $meta = false): array
   {
     if(!is_array($search) || empty($search)){return []; };

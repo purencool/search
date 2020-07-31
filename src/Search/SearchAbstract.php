@@ -162,13 +162,16 @@ abstract class SearchAbstract
    * Role of method
    * 1. Use of php functions to check if request is correct
    *
-   * @param $request String The request string that is to be found in $search
-   * @param $search  String A string that is being searched
-   * @param $type    String This is used to set the type of seach and it defaults to partial
+   * @param $param = array [
+   *   'request', // The request string that is to be found in $search
+   *   'search', // A string that is being searched
+   *   'type' // This is used to set the type of search and it defaults to partial
+   * ];
+   *
    * @return string
    *
    */
-  abstract protected function searchStringElement($request, $search, $type = 'partial') : string;
+  abstract protected function searchStringElement($param) : string;
 
 
   /**

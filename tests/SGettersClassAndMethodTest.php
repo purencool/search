@@ -49,10 +49,10 @@ class SGettersClassAndMethodTest extends TestCase
 
   public function testGetSearchStringElement()
   {
-    $testObj = \Purencool\TestData\TestData::defaultArray();
+    $testObj = Purencool\TestData\TestData::defaultArray();
     $obj = new Purencool\Search\SearchGetters($testObj);
     $this->assertTrue(
-      is_string($obj->getSearchStringElement('request','search', 'type'))
+      is_string($obj->getSearchStringElement([]))
     );
     unset($obj);
   }
