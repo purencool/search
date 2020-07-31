@@ -15,11 +15,12 @@ interface SearchInterface
    * getSearchResults().
    *
    * @param array $param[
-   *   'search_array'
-   *   'search_string'
+   *   'search_arr'
+   *   'search_request'
    * ]
    *
    * @return array
+   *
    */
   public function getSearchResults($param) : array;
 }

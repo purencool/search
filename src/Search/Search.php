@@ -60,7 +60,6 @@ class Search extends SearchAbstract implements SearchInterface {
 
   /**
    * @inheritDoc
-   *
    */
   protected function searchArrayInit($arr)
   {
@@ -108,10 +107,7 @@ class Search extends SearchAbstract implements SearchInterface {
 
 
   /**
-   * @param array $param = [
-   *  'search_request', 'meta_information'
-   * ];
-   * @return array
+   * @inheritDoc
    */
   protected function searchArrayForElement($param): array
   {
@@ -136,11 +132,7 @@ class Search extends SearchAbstract implements SearchInterface {
   }
 
   /**
-   * @param array $param[
-   *   'search_arr'
-   *   'search_request'
-   * ]
-   * @return array
+   * @inheritDoc
    */
   public function getSearchResults($param) : array
   {
