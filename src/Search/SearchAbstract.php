@@ -85,7 +85,7 @@ abstract class SearchAbstract
    * @param array $param overrides default parameters
    *
    */
-  public function __construct(Array $searchArray,Array $param = []) {
+  public function __construct(Array $searchArray = [] ,Array $param = []) {
     if(!empty($param)){
      $this->paramAlter($param);
     }
@@ -195,7 +195,7 @@ abstract class SearchAbstract
    *    - searchArrayForElementResult
    *
    * @param array $param = [
-   *  'request', 'meta_information'
+   *  'search_request', 'meta_information'
    * ];
    *
    * @return array

@@ -22,8 +22,8 @@ class Search extends SearchAbstract implements SearchInterface {
    * @param array $param;
    *
    */
-  public function __construct($searchArray, $param =[]) {
-    parent::__construct($searchArray, $param = []);
+  public function __construct($searchArray = [], $param = []) {
+    parent::__construct($searchArray, $param);
     $this->searchArrayInit($searchArray);
   }
 
@@ -43,7 +43,11 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   protected function searchArrayInit($arr)
   {
-    $this->searchArrayParsed = WorkerSetUpParser::parseArr($arr);
+    if(!empty($arr) || is_array($arr)){
+      $this->searchArrayParsed = WorkerSetUpParser::parseArr($arr);
+    }
+
+    $this->searchArrayParsed = ['error' => 'Array given was empty'];
   }
 
 
@@ -79,7 +83,7 @@ class Search extends SearchAbstract implements SearchInterface {
 
   /**
    * @param array $param = [
-   *  'request', 'meta_information'
+   *  'search_request', 'meta_information'
    * ];
    * @return array
    */
@@ -91,6 +95,7 @@ class Search extends SearchAbstract implements SearchInterface {
 
     $param['search_arr'] = $this->searchArrayParsed;
     $param['tag'] = $this->param['tagging__key'];
+
     return WorkerArrayStringFinder::find($param);
   }
 

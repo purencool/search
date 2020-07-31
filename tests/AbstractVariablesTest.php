@@ -19,6 +19,8 @@ class AbstractVariablesTest extends TestCase
   {
     $this->assertTrue(is_string('testAbstractVariablesTest'));
 
+
+
     //*
     $testObj = new Purencool\TestData\TestData();
     $obj = new Purencool\Search\SearchGetters($testObj::defaultMultidimensionalArray());
