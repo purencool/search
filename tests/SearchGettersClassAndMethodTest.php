@@ -24,13 +24,10 @@ class SearchGettersClassAndMethodTest extends TestCase
   {
     $methodNamesArr = [
       'getIteratingOverArray',
-      'getCheckElementIsArray',
       'getSearchStringElement',
-      'getTrackKeyPath',
-      'getAttachToSearchReply'
     ];
-
-    $obj = new Purencool\Search\SearchGetters();
+    $testObj = \Purencool\TestData\TestData::defaultArray();
+    $obj = new Purencool\Search\SearchGetters($testObj);
     foreach ($methodNamesArr as $methodNames ){
       $this->assertTrue(method_exists($obj, $methodNames));
     }
@@ -41,23 +38,19 @@ class SearchGettersClassAndMethodTest extends TestCase
 
   public function testGetIteratingOverArray()
   {
-    $obj = new Purencool\Search\SearchGetters();
+    $testObj = \Purencool\TestData\TestData::defaultArray();
+    $obj = new Purencool\Search\SearchGetters($testObj);
     $this->assertTrue(is_int($obj->getIteratingOverArray([])));
     unset($obj);
   }
 
 
-  public function testCheckElementIsArray()
-  {
-    $obj = new Purencool\Search\SearchGetters();
-    $this->assertTrue(is_bool($obj->getCheckElementIsArray([])));
-    unset($obj);
-  }
 
 
   public function testGetSearchStringElement()
   {
-    $obj = new Purencool\Search\SearchGetters();
+    $testObj = \Purencool\TestData\TestData::defaultArray();
+    $obj = new Purencool\Search\SearchGetters($testObj);
     $this->assertTrue(
       is_string($obj->getSearchStringElement('request','search', 'type'))
     );
@@ -65,24 +58,12 @@ class SearchGettersClassAndMethodTest extends TestCase
   }
 
 
-  public function testGetTrackKeyPath()
-  {
-    $obj = new Purencool\Search\SearchGetters();
-    $this->assertTrue(is_array($obj->getTrackKeyPath([])));
-    unset($obj);
-  }
 
-
-  public function testGetAttachToSearchReply()
-  {
-    $obj = new Purencool\Search\SearchGetters();
-    $this->assertTrue(is_array($obj->getAttachToSearchReply([])));
-    unset($obj);
-  }
 
   public function testSetAndGetProtectedVariableParamMethods()
   {
-    $obj = new Purencool\Search\SearchGetters();
+    $testObj = Purencool\TestData\TestData::defaultArray();
+    $obj = new Purencool\Search\SearchGetters($testObj);
     $obj->setParams(['over write the params array']);
     $result = $obj->getParams();
     $this->assertTrue($result[0] === 'over write the params array');

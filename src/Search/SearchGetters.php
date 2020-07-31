@@ -13,9 +13,11 @@ namespace Purencool\Search;
 class SearchGetters extends Search
 {
 
+
+
   /**
    * Returns the amount of iterations over the array in an INT.
-   * @see \Purencool\Search\SearchAbstract::$iteratingOverArrayResult
+   * @see \Purencool\Search\SearchAbstract::$searchArrayParsed
    * @see \Purencool\Search\SearchAbstract::iteratingOverArray()
    * @see \Purencool\Search\Search::iteratingOverArray()
    *
@@ -27,14 +29,7 @@ class SearchGetters extends Search
     return $this->iteratingOverArray($arr);
   }
 
-  /**
-   * @param $arr
-   * @return bool
-   */
-  public function getCheckElementIsArray($arr): bool
-  {
-    return $this->checkElementIsArray($arr);
-  }
+
 
   /**
    * Allows access to the protected searchStringElement
@@ -70,41 +65,24 @@ class SearchGetters extends Search
     return $this->searchArrayForElement($request,$search, $meta);
   }
 
+
+
+
   /**
-   * @param $arr
+   * @see \Purencool\Search\SearchAbstract::$searchArrayParsed
    * @return array
    *
    */
-  public function getTrackKeyPath($arr): array
-  {
-    return $this->trackKeyPath($arr);
+  public function getSearchArrayParsed() : array {
+    return $this->searchArrayParsed;
   }
 
   /**
-   * @param $arr
-   * @return array
-   *
-   */
-  public function getAttachToSearchReply($arr): array
-  {
-    return $this->attachToSearchReply($arr);
-  }
-
-  /**
-   * @see \Purencool\Search\SearchAbstract::$iteratingOverArrayResult
-   * @return array
-   *
-   */
-  public function getIteratingOverArrayResult() : array {
-    return $this->iteratingOverArrayResult;
-  }
-
-  /**
-   * @see \Purencool\Search\SearchAbstract::$arrayKeyFindingResult
+   * @see \Purencool\Search\SearchAbstract::$keyFinderResults
    * @return array
    */
-  public function getArrayKeyFindingResult() : array {
-    return $this->arrayKeyFindingResult;
+  public function getKeyFinderResults() : array {
+    return $this->keyFinderResults;
   }
 
 

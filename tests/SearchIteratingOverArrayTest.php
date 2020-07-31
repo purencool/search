@@ -24,7 +24,9 @@ class SearchIteratingOverArrayTest extends TestCase
    */
   public function testIteratingOverArray()
   {
-    $obj = new Purencool\Search\SearchGetters();
+
+    $testObj = Purencool\TestData\TestData::defaultArray();
+    $obj = new Purencool\Search\SearchGetters($testObj);
     $this->assertTrue(is_int($obj->getIteratingOverArray([])));
     unset($obj);
   }
@@ -36,18 +38,24 @@ class SearchIteratingOverArrayTest extends TestCase
    */
   public function testIteratingOverMultipleArrays()
   {
-    $obj = new Purencool\Search\SearchGetters();
+    // @todo remove iterate over array var not needed
+
     $testObj = new Purencool\TestData\TestData();
 
     // 0 elements in the array
+    $obj = new Purencool\Search\SearchGetters($testObj::defaultArray());
     $this->assertTrue(($obj->getIteratingOverArray([]) == 0 ));
+    unset($obj);
 
     // 6 elements in the array
+    $obj = new Purencool\Search\SearchGetters($testObj::defaultArray());
     $this->assertTrue(($obj->getIteratingOverArray($testObj::defaultArray()) == 6 ));
+    unset($obj);
+
 
     // 18 elements in the array
+    $obj = new Purencool\Search\SearchGetters($testObj::defaultMultidimensionalArray());
     $this->assertTrue(($obj->getIteratingOverArray($testObj::defaultMultidimensionalArray()) == 18));
-
     unset($obj);
   }
 

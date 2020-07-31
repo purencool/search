@@ -2,6 +2,7 @@
 
 namespace Purencool\Search;
 
+
 /**
  *  Search
  *
@@ -14,57 +15,36 @@ class Search extends SearchAbstract implements SearchInterface {
 
 
   /**
+   * The constructor can load SearchArray
    *
-   * @param array $arr
-   * @param  array $results
-   * @return array
+   * SearchGetters constructor.
+   * @param $searchArray
+   * @param array $param;
+   *
    */
-  private function arrayParsing($arr, array $results) : array
-  {
-    foreach($arr as $k => $v) {
-      if(is_array($v)){
-        $results[$k] = $this->arrayParsing($arr[$k], [ $this->param['tagging__key'] => 0 ]);
-      } else {
-        $results['element_data'][]= ['key' => $k, 'data' => $v];
-        $results['iteration_count']++;
-
-      }
-    }
-
-    return $results;
+  public function __construct($searchArray, $param =[]) {
+    parent::__construct($searchArray, $param = []);
+    $this->searchArrayInit($searchArray);
   }
 
   /**
-   * @param $arr
-   * @param $search_key
-   * @return array
+   * @param string $tag
    */
-  private function arrayKeyFinding($arr, $search_key) : array
+  private function setTag($tag)
   {
-    $results = [];
-    foreach($arr as $k => $v) {
-      if(is_array($v)){
-          $results[$k] = $this->arrayKeyFinding($arr[$k], $search_key);
-      } else {
-        if($k == $search_key) {
-          $results[$search_key] = $v;
-        }
-      }
-    }
-
-    return $results;
+    $this->param['tagging__key'] = $tag;
   }
+
 
   /**
-   * @param $arr
-   * @return array
+   * @inheritDoc
+   *
    */
-  private function arrayFlatten($arr) : array
+  protected function searchArrayInit($arr)
   {
-    $return = [];
-    array_walk_recursive($arr, function($a) use (&$return) { $return[] = $a; });
-    return $return;
+    $this->searchArrayParsed = WorkerSetUpParser::parseArr($arr);
   }
+
 
 
   /**
@@ -73,72 +53,40 @@ class Search extends SearchAbstract implements SearchInterface {
   protected function iteratingOverArray($arr) : int
   {
     if(!is_array($arr) || empty($arr)){ return 0; }
+    $this->setTag('iteration_count');
 
-    $this->iteratingOverArrayResult = $this->arrayParsing(
-        $arr,[$this->param['tagging__key'] => 0 ]
+    $this->keyFinderResults = WorkerKeyFinder::find(
+        $this->searchArrayParsed ,$this->param['tagging__key']
     );
 
-    $this->arrayKeyFindingResult = $this->arrayKeyFinding(
-        $this->iteratingOverArrayResult ,$this->param['tagging__key']
-    );
-
-    $this->arrayFlattenResult = $this->arrayFlatten($this->arrayKeyFindingResult);
+    $this->arrayFlattenResult = WorkerFlattenArray::find($this->keyFinderResults);
 
     return array_sum($this->arrayFlattenResult);
 
   }
 
-  /**
-   * @inheritDoc
-   */
-  protected function checkElementIsArray($arr) : bool
-  {
-
-    return is_array($arr);
-  }
 
   /**
    * @inheritDoc
    */
-  protected function searchStringElement($request, $search, $type = 'partial') : string
+  protected function searchStringElement($request, $search, $type = 'partial' ) : string
   {
-
-    if(is_array($search)){
-      return '';
-    } elseif (stripos($search,$request) !== '' && $type == 'partial'){
-      return $request;
-    } elseif(strpos($search,$request) !== '' && $type == 'absolute'){
-      return $request;
-    }
-
-    return '';
+    return WorkerStringFinder::find($request, $search, $type);
   }
 
-  /**
-   * @inheritDoc
-   */
-  protected function trackKeyPath($arr) : array
-  {
-    return ['trackKeyPath'];
-  }
 
-  /**
-   * @inheritDoc
-   */
-  protected function attachToSearchReply($arr) : array
-  {
-    return ['attachToSearchReply'];
-  }
+
 
   protected function searchArrayForElement($request, $search, $meta = false): array
   {
     if(!is_array($search) || empty($search)){return []; };
 
-
-
     return [
-      'iterations_over_array' =>  $this->iteratingOverArray($search)
-
+      'iterations_over_array' =>  $this->iteratingOverArray($search),
+      'items_found' =>   WorkerArrayStringFinder::find(
+         $search,
+         'number',
+         $this->setTag('items_found')),
     ];
   }
 
@@ -157,11 +105,12 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   public function getSearchResults($searchArray = [],$searchString = "") : array
   {
-    if($this->iteratingOverArrayResult == null) {
+    if($this->searchArrayParsed == null) {
       return [];
     }
-    return $this->iteratingOverArrayResult;
+    return $this->searchArrayParsed;
   }
+
 
 
 }

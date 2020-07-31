@@ -15,6 +15,15 @@ abstract class SearchAbstract
 {
 
   /**
+   *  Array to be searched
+   *  method
+   *
+   * @var array
+   *
+   */
+  protected $searchArray;
+
+  /**
    * The use of the Param array is for so that any assumptions can
    * be altered if needed by finding the array key and altering the
    * element
@@ -24,7 +33,7 @@ abstract class SearchAbstract
    */
   protected $param = [
      'default' => 'default',
-     'tagging__key' => 'iteration_count',
+     'tagging__key' => '',
      'search_metadata__key' => 'items_metadata',
      'search_item__key' => ''
     ];
@@ -37,7 +46,7 @@ abstract class SearchAbstract
    * @var array
    *
    */
-  protected $iteratingOverArrayResult;
+  protected $searchArrayParsed;
 
 
   /**
@@ -47,7 +56,7 @@ abstract class SearchAbstract
    * @var array
    *
    */
-  protected $arrayKeyFindingResult;
+   protected $keyFinderResults;
 
 
   /**
@@ -72,13 +81,17 @@ abstract class SearchAbstract
 
   /**
    * SearchAbstract constructor.
-   * @param array $param over rides default parameters
+   * @param array $searchArray loads array to be searched
+   * @param array $param overrides default parameters
    *
    */
-  public function __construct(Array $param = []) {
+  public function __construct(Array $searchArray,Array $param = []) {
     if(!empty($param)){
      $this->paramAlter($param);
     }
+
+    $this->searchArray = $searchArray;
+
   }
 
 
@@ -100,6 +113,14 @@ abstract class SearchAbstract
     }
   }
 
+  /**
+   * Neede for loading
+   *
+   * @param $arr
+   *
+   */
+   abstract protected function searchArrayInit($arr);
+
 
   /**
    * Iterates over multidimensional arrays using recursion and calls methods
@@ -113,8 +134,8 @@ abstract class SearchAbstract
    *
    * Role of method
    * 1. This method will setup all the protected arrays mentioned below.
-   *    - iteratingOverArrayResult
-   *    - arrayKeyFindingResult
+   *    - searchArrayParsed
+   *    - keyFinderResults
    *    - arrayFlattenResult
    * 2. Return INT value
    *
@@ -126,15 +147,7 @@ abstract class SearchAbstract
   abstract protected function iteratingOverArray($arr) : int;
 
 
-  /**
-   * Checks is the variable passed in is an array and has the
-   * needed functionality for the next step
-   *
-   * @param $arr
-   * @return bool
-   *
-   */
-  abstract protected function checkElementIsArray($arr) : bool;
+
 
 
   /**
@@ -189,24 +202,6 @@ abstract class SearchAbstract
    *
    */
   abstract protected function searchArrayForElement($request, $search, $meta = false) : array;
-
-
-  /**
-   * @todo don't think this is needed
-   * @param $arr
-   * @return array
-   *
-   */
-  abstract protected function trackKeyPath($arr) : array;
-
-
-  /**
-   * @todo not sure this is needed
-   * @param $arr
-   * @return array
-   *
-   */
-  abstract protected function attachToSearchReply($arr) : array;
 
 
   /**

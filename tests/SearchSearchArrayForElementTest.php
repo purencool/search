@@ -37,7 +37,8 @@ class SearchSearchArrayForElementTest extends TestCase
    */
   public function testSearchArrayForElement()
   {
-    $obj = new Purencool\Search\SearchGetters();
+    $testObj = Purencool\TestData\TestData::defaultArray();
+    $obj = new Purencool\Search\SearchGetters($testObj);
     $objTest = new Purencool\TestData\TestData();
 
     // Response 2

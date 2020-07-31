@@ -11,10 +11,16 @@ namespace Purencool\Search;
  * @package Purencool\Search
  *
  */
-class WorkerFlattenArray
+class WorkerStringFinder
 {
 
-
+  /**
+   * @param $request
+   * @param $search
+   * @param string $type
+   * @return string
+   *
+   */
   public static function find($request, $search, $type = 'partial') : string
   {
 

@@ -9,14 +9,6 @@ use PHPUnit\Framework\TestCase;
 class SearchSearchStringElementTest extends TestCase
 {
 
-  /**
-   * Check this class
-   */
-  public function testSearchCheckElementIsArrayTest()
-  {
-    $this->assertTrue(is_string('testSearchSearchStringElementTest'));
-  }
-
 
   /**
    * Check method
