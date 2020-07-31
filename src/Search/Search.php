@@ -38,16 +38,37 @@ class Search extends SearchAbstract implements SearchInterface {
 
 
   /**
+   * @param $arr
+   * @param $keyCheck
+   * @return bool
+   */
+  private function arrValidator($arr, $keyCheck = []) : bool
+  {
+    if(!is_array($arr) || empty($arr)){
+      return false;
+    }
+
+    foreach ($keyCheck as $keyCheckV){
+      if(isset($arr[$keyCheckV])) {
+          return false;
+      }
+    }
+
+    return true;
+  }
+
+
+  /**
    * @inheritDoc
    *
    */
   protected function searchArrayInit($arr)
   {
-    if(!empty($arr) || is_array($arr)){
+    if($this->arrValidator($arr)){
       $this->searchArrayParsed = WorkerSetUpParser::parseArr($arr);
+    } else {
+      $this->searchArrayParsed = ['error' => 'Array given wasn\'t empty'];
     }
-
-    $this->searchArrayParsed = ['error' => 'Array given was empty'];
   }
 
 
@@ -56,12 +77,15 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   protected function countArrayItems() : int
   {
-    $arr =$this->searchArrayParsed;
-    if(!is_array($arr) || empty($arr)){ return 0; }
+    if($this->arrValidator($this->searchArrayParsed)){
+      return 0;
+    }
+
     $this->setTag('iteration_count');
 
     $this->keyFinderResults = WorkerKeyFinder::find(
-        $this->searchArrayParsed ,$this->param['tagging__key']
+        $this->searchArrayParsed ,
+        $this->param['tagging__key']
     );
 
     $this->arrayFlattenResult = WorkerFlattenArray::find($this->keyFinderResults);
@@ -76,7 +100,9 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   protected function searchStringElement($param) : string
   {
-    if(!is_array($param) || empty($param)){ return ''; }
+    if($this->arrValidator($param)){
+      return '';
+    }
     return WorkerStringFinder::find($param);
   }
 
@@ -89,7 +115,9 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   protected function searchArrayForElement($param): array
   {
-    if(!is_array($param) || empty($param)){return []; }
+    if($this->arrValidator($param,['search_request','meta_information'])){
+      return [];
+    }
 
     $this->setTag('items_found');
 
@@ -109,13 +137,16 @@ class Search extends SearchAbstract implements SearchInterface {
 
   /**
    * @param array $param[
-   *   'search_array'
-   *   'search_string'
+   *   'search_arr'
+   *   'search_request'
    * ]
    * @return array
    */
   public function getSearchResults($param) : array
   {
+    if($this->arrValidator($param)){
+      return [];
+    }
     return [];
   }
 

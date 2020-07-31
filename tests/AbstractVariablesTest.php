@@ -21,20 +21,20 @@ class AbstractVariablesTest extends TestCase
 
     $testObj = new Purencool\TestData\TestData();
     $obj = new Purencool\Search\SearchGetters($testObj::defaultArray());
-    $this->assertTrue(is_array($obj->getSearchArrayForElement(['search_request' => 'aaaaaaa'])));
-    $this->assertTrue(($obj->getSearchArrayForElement(['search_request' => 'aaaaaaa'])));
+   // $this->assertTrue(is_array($obj->getSearchArrayForElement(['search_request' => 'aaaaaaa'])));
+   // $this->assertTrue(($obj->getSearchArrayForElement(['search_request' => 'aaaaaaa'])));
     unset($obj);
 
     //*
     $testObj = new Purencool\TestData\TestData();
-    $obj = new Purencool\Search\SearchGetters($testObj::defaultMultidimensionalArray());
+    $obj = new Purencool\Search\SearchGetters($testObj::defaultArray());
     // print_r( $obj->getCountArrayItems());
     // print_r($obj->getSearchArrayParsed());
     // print_r($obj->getArrayFlattenResult());
     // print_r($obj->getKeyFinderResults());
     //print_r($obj->getSearchArrayForElement('unusually',$testObj::defaultArray(), false ));
     //print_r($obj->getSearchArrayForElement('unusually',$testObj::defaultMultidimensionalArray(), false ));
-    print_r($obj->getSearchResults([ 'search_string' => 'my test string']));
+    print_r($obj->getSearchResults([ 'search_request' => 'my test string']));
     exit;
     // */
 
