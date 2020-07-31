@@ -194,13 +194,14 @@ abstract class SearchAbstract
    * 4. This method also adds results to the following protected variables
    *    - searchArrayForElementResult
    *
-   * @param string $request
-   * @param array $search
-   * @param bool $meta
+   * @param array $param = [
+   *  'request', 'meta_information'
+   * ];
+   *
    * @return array
    *
    */
-  abstract protected function searchArrayForElement($request, $search, $meta = false) : array;
+  abstract protected function searchArrayForElement($param) : array;
 
 
   /**

@@ -18,6 +18,7 @@ class WorkerArrayStringFinder
    * @param $param = [
    *   'arr',
    *   'search',
+   *   'meta_information'
    *   'tag'
    *  ];
    *
@@ -31,7 +32,7 @@ class WorkerArrayStringFinder
       if(is_array($v)){
         $results[$k] = self::find([$param['arr'][$k], $param['search'], $param['tag']]);
       } else {
-        if(WorkerStringFinder::find($v,$param['search']) != '') {
+        if(WorkerStringFinder::find([$v,$param['search']]) != '') {
           $results[][$param['tag']] = $v;
         }
       }

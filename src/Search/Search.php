@@ -78,21 +78,19 @@ class Search extends SearchAbstract implements SearchInterface {
 
 
   /**
-   * @param string $request
-   * @param array $search
-   * @param false $meta
+   * @param array $param = [
+   *  'request', 'meta_information'
+   * ];
    * @return array
    */
-  protected function searchArrayForElement($request, $search, $meta = false): array
+  protected function searchArrayForElement($param): array
   {
-    if(!is_array($search) || empty($search)){return []; };
-
+    if(!is_array($param) || empty($param)){return []; };
+    array_push($param,$this->searchArrayParsed);
+    array_push($param,$this->setTag('items_found'));
     return [
-      'iterations_over_array' =>  $this->countArrayItems($search),
-      'items_found' =>   WorkerArrayStringFinder::find(
-         $search,
-         'number',
-         $this->setTag('items_found')),
+      'count_array_items' =>  $this->countArrayItems(),
+      'items_found' =>   WorkerArrayStringFinder::find($param),
     ];
   }
 
