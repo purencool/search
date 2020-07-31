@@ -24,7 +24,7 @@ abstract class SearchAbstract
    */
   protected $param = [
      'default' => 'default',
-     'iterating_count_key' => 'iteration_count',
+     'iterating__key' => 'iteration_count',
      'items_metadata_key' => 'items_metadata',
     ];
 

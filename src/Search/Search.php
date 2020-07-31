@@ -23,7 +23,7 @@ class Search extends SearchAbstract implements SearchInterface {
   {
     foreach($arr as $key => $value) {
       if(is_array($value)){
-        $results[$key] = $this->arrayParsing($arr[$key], [ $this->param['iterating_count_key'] => 0 ]);
+        $results[$key] = $this->arrayParsing($arr[$key], [ $this->param['iterating__key'] => 0 ]);
       } else {
         $results['element_data'][]= ['key' => $key, 'data' => $value];
         $results['iteration_count']++;
@@ -43,12 +43,12 @@ class Search extends SearchAbstract implements SearchInterface {
   {
     $resultsFinder = [];
     foreach($arr as $key => $value) {
-      if(!is_array($value)){
-        if($key == $find){
-          $resultsFinder[$find]= $value;
-        }
+      if(is_array($value)){
+          $resultsFinder[$key] = $this->arrayKeyFinding($arr[$key], $this->param['iterating__key']);
       } else {
-        $resultsFinder[$key][0] = $this->arrayKeyFinding($arr[$key], $find);
+        if($key == $find) {
+          $resultsFinder[$find] = $value;
+        }
       }
     }
 
@@ -56,17 +56,14 @@ class Search extends SearchAbstract implements SearchInterface {
   }
 
   /**
-   * @param $array
+   * @param $arr
    * @return array
    */
-  private function arrayFlatten($array) : array
+  private function arrayFlatten($arr) : array
   {
-     $result = [];
-     foreach ($array as $value) {
-        $result = array_merge($result, $this->arrayFlatten($value));
-     }
-
-    return $result;
+    $return = [];
+    array_walk_recursive($arr, function($a) use (&$return) { $return[] = $a; });
+    return $return;
   }
 
 
@@ -75,10 +72,10 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   protected function iteratingOverArray($arr) : int
   {
-      if(!is_array($arr)){ return 0; }
+      if(!is_array($arr) || empty($arr)){ return 0; }
 
-      $this->iteratingOverArrayResult = $this->arrayParsing($arr,[ $this->param['iterating_count_key'] => 0 ]);
-      $this->arrayKeyFindingResult = $this->arrayKeyFinding( $this->iteratingOverArrayResult ,$this->param['iterating_count_key']);
+      $this->iteratingOverArrayResult = $this->arrayParsing($arr,[ $this->param['iterating__key'] => 0 ]);
+      $this->arrayKeyFindingResult = $this->arrayKeyFinding( $this->iteratingOverArrayResult ,$this->param['iterating__key']);
       $this->arrayFlattenResult = $this->arrayFlatten($this->arrayKeyFindingResult);
 
       $return = 0;
@@ -133,10 +130,14 @@ class Search extends SearchAbstract implements SearchInterface {
 
   protected function searchArrayForElement($request, $search, $meta = false): array
   {
-    if(!is_array($search)){return []; };
+    if(!is_array($search) || empty($search)){return []; };
 
 
-    return ['testing to see if it works'];
+
+    return [
+      'iterations_over_array' =>  $this->iteratingOverArray($search)
+
+    ];
   }
 
   /**

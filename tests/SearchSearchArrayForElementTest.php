@@ -43,7 +43,6 @@ class SearchSearchArrayForElementTest extends TestCase
     // Response 2
     $this->assertTrue(empty($obj->getSearchArrayForElement('request', [], false)));
 
-
     // Response 1
     $this->assertTrue(!empty($obj->getSearchArrayForElement('unusually',$objTest::defaultArray(), false )));
     $this->assertTrue(empty($obj->getSearchArrayForElement('unusually111111',$objTest::defaultArray(), false )));
