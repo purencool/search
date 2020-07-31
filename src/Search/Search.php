@@ -85,13 +85,14 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   protected function searchArrayForElement($param): array
   {
-    if(!is_array($param) || empty($param)){return []; };
-    array_push($param,$this->searchArrayParsed);
-    array_push($param,$this->setTag('items_found'));
-    return [
-      'count_array_items' =>  $this->countArrayItems(),
-      'items_found' =>   WorkerArrayStringFinder::find($param),
-    ];
+    if(!is_array($param) || empty($param)){return []; }
+
+    $this->setTag('items_found');
+
+    $param['search_arr'] = $this->searchArrayParsed;
+    $param['tag'] = $this->param['tagging__key'];
+
+    return WorkerArrayStringFinder::find($param);
   }
 
   /**
@@ -103,18 +104,15 @@ class Search extends SearchAbstract implements SearchInterface {
   }
 
   /**
-   * @param array $searchArray
-   * @param string $searchString
+   * @param array $param[
+   *   'search_array'
+   *   'search_string'
+   * ]
    * @return array
    */
-  public function getSearchResults($searchArray = [],$searchString = "") : array
+  public function getSearchResults($param) : array
   {
-    if($this->searchArrayParsed == null) {
-      return [];
-    }
-    return $this->searchArrayParsed;
+    return [];
   }
-
-
 
 }

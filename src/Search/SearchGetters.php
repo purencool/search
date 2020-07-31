@@ -109,4 +109,21 @@ class SearchGetters extends Search
   public function setParams($arr) {
      $this->param = $arr;
   }
+
+
+  /**
+   * @param array $param[
+   *   'search_array'
+   *   'search_string'
+   * ]
+   * @return array
+   */
+  public function getSearchResults($param) : array
+  {
+    return [
+      'count_array_items' =>  $this->countArrayItems(),
+      'found_array_items' =>  $this->searchArrayForElement($param)
+    ];
+  }
+
 }
