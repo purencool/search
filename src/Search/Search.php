@@ -23,7 +23,7 @@ class Search extends SearchAbstract implements SearchInterface {
   {
     foreach($arr as $key => $value) {
       if(is_array($value)){
-        $results[$key] = $this->arrayParsing($arr[$key], [ $this->param['iterating__key'] => 0 ]);
+        $results[$key] = $this->arrayParsing($arr[$key], [ $this->param['tagging__key'] => 0 ]);
       } else {
         $results['element_data'][]= ['key' => $key, 'data' => $value];
         $results['iteration_count']++;
@@ -36,23 +36,23 @@ class Search extends SearchAbstract implements SearchInterface {
 
   /**
    * @param $arr
-   * @param $find
+   * @param $search_key
    * @return array
    */
-  private function arrayKeyFinding($arr, $find) : array
+  private function arrayKeyFinding($arr, $search_key) : array
   {
-    $resultsFinder = [];
-    foreach($arr as $key => $value) {
-      if(is_array($value)){
-          $resultsFinder[$key] = $this->arrayKeyFinding($arr[$key], $this->param['iterating__key']);
+    $results = [];
+    foreach($arr as $k => $v) {
+      if(is_array($v)){
+          $results[$k] = $this->arrayKeyFinding($arr[$k], $search_key);
       } else {
-        if($key == $find) {
-          $resultsFinder[$find] = $value;
+        if($k == $search_key) {
+          $results[$search_key] = $v;
         }
       }
     }
 
-    return $resultsFinder;
+    return $results;
   }
 
   /**
@@ -74,8 +74,14 @@ class Search extends SearchAbstract implements SearchInterface {
   {
       if(!is_array($arr) || empty($arr)){ return 0; }
 
-      $this->iteratingOverArrayResult = $this->arrayParsing($arr,[ $this->param['iterating__key'] => 0 ]);
-      $this->arrayKeyFindingResult = $this->arrayKeyFinding( $this->iteratingOverArrayResult ,$this->param['iterating__key']);
+      $this->iteratingOverArrayResult = $this->arrayParsing(
+        $arr,[$this->param['tagging__key'] => 0 ]
+      );
+
+      $this->arrayKeyFindingResult = $this->arrayKeyFinding(
+        $this->iteratingOverArrayResult ,$this->param['tagging__key']
+      );
+
       $this->arrayFlattenResult = $this->arrayFlatten($this->arrayKeyFindingResult);
 
       $return = 0;
