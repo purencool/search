@@ -21,11 +21,11 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   private function arrayParsing($arr, array $results) : array
   {
-    foreach($arr as $key => $value) {
-      if(is_array($value)){
-        $results[$key] = $this->arrayParsing($arr[$key], [ $this->param['tagging__key'] => 0 ]);
+    foreach($arr as $k => $v) {
+      if(is_array($v)){
+        $results[$k] = $this->arrayParsing($arr[$k], [ $this->param['tagging__key'] => 0 ]);
       } else {
-        $results['element_data'][]= ['key' => $key, 'data' => $value];
+        $results['element_data'][]= ['key' => $k, 'data' => $v];
         $results['iteration_count']++;
 
       }
@@ -72,23 +72,19 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   protected function iteratingOverArray($arr) : int
   {
-      if(!is_array($arr) || empty($arr)){ return 0; }
+    if(!is_array($arr) || empty($arr)){ return 0; }
 
-      $this->iteratingOverArrayResult = $this->arrayParsing(
+    $this->iteratingOverArrayResult = $this->arrayParsing(
         $arr,[$this->param['tagging__key'] => 0 ]
-      );
+    );
 
-      $this->arrayKeyFindingResult = $this->arrayKeyFinding(
+    $this->arrayKeyFindingResult = $this->arrayKeyFinding(
         $this->iteratingOverArrayResult ,$this->param['tagging__key']
-      );
+    );
 
-      $this->arrayFlattenResult = $this->arrayFlatten($this->arrayKeyFindingResult);
+    $this->arrayFlattenResult = $this->arrayFlatten($this->arrayKeyFindingResult);
 
-      $return = 0;
-      foreach ($this->arrayFlattenResult as $value){
-        $return = $return + $value;
-      }
-    return $return;
+    return array_sum($this->arrayFlattenResult);
 
   }
 
