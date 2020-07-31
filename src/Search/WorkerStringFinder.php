@@ -16,23 +16,26 @@ class WorkerStringFinder
 
   /**
    * @param $param
-   *   ['request', 'search', 'type' => 'partial']
+   *   ['search_request', 'search_item', 'type' => 'partial']
    * @return string
    *
    */
   public static function find($param) : string
   {
+    if(!isset($param['search_request']) || !isset($param['search_item'])){
+      return '';
+    }
 
-    if($param['type'] == ''){
+    if(!isset($param['type']) || $param['type'] == ''){
       $param['type'] = 'partial';
     }
 
-    if(is_array($param['search'])){
-      return '';
-    } elseif (stripos($param['search'],$param['request']) !== '' && $param['type'] == 'partial'){
-      return $param['request'];
-    } elseif(strpos($param['search'],$param['request']) !== '' && $param['type']  == 'absolute'){
-      return $param['request'];
+    $search = (string) $param['search_item'];
+    $request = (string) $param['search_request'];
+    if (stripos($search, $request) !== '' && $param['type'] == 'partial'){
+      return $request;
+    } elseif(strpos($search, $request) !== '' && $param['type']  == 'absolute'){
+      return  $request;;
     }
 
     return '';

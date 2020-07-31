@@ -32,9 +32,15 @@ class WorkerArrayStringFinder
     $results = [];
     foreach($param['search_arr'] as $k => $v) {
       if(is_array($v)){
-        $results[$k] = self::find([$param['search_arr'][$k], $param['search_string'], $param['tag']]);
+        $recursionParams = [
+          'search_arr' => $param['search_arr'][$k],
+          'search_string' => $param['search_string'],
+          'tag' =>  $param['tag']
+        ];
+        $results[$k] = self::find( $recursionParams);
       } else {
-        if(WorkerStringFinder::find([$v,$param['search_string']]) != '') {
+        $searchParam =['search_request' => $v, 'search_item' => $param['search_string']];
+        if(WorkerStringFinder::find( $searchParam) != '') {
           $results[][$param['tag']] = $v;
         }
       }

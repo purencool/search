@@ -91,7 +91,6 @@ class Search extends SearchAbstract implements SearchInterface {
 
     $param['search_arr'] = $this->searchArrayParsed;
     $param['tag'] = $this->param['tagging__key'];
-
     return WorkerArrayStringFinder::find($param);
   }
 
