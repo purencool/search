@@ -21,12 +21,11 @@ class SearchGetters extends Search
    * @see \Purencool\Search\SearchAbstract::countArrayItems()
    * @see \Purencool\Search\Search::countArrayItems()
    *
-   * @param $arr
    * @return int
    */
-  public function getCountArrayItems($arr): int
+  public function getCountArrayItems(): int
   {
-    return $this->countArrayItems($arr);
+    return $this->countArrayItems();
   }
 
 

@@ -125,9 +125,10 @@ abstract class SearchAbstract
   /**
    * Iterates over multidimensional arrays using recursion and calls methods
    * to build out a response with metadata for the requested response.
+   * @see \Purencool\Search\Search::$searchArrayParsed
    *
    * Request
-   * 1. Any type of array
+   * 1. Will come from protected variable called $this->searchArrayParsed;
    *
    * Response
    * 1. Returns an INT with the amount of iterations completed.
@@ -139,12 +140,10 @@ abstract class SearchAbstract
    *    - arrayFlattenResult
    * 2. Return INT value
    *
-   * @todo needs to be renamed to suite role in library
-   * @param $arr
    * @return int
    *
    */
-  abstract protected function countArrayItems($arr) : int;
+  abstract protected function countArrayItems() : int;
 
 
   /**

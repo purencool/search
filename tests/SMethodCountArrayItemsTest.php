@@ -44,18 +44,18 @@ class SearchcountArrayItemsTest extends TestCase
 
     // 0 elements in the array
     $obj = new Purencool\Search\SearchGetters($testObj::defaultArray());
-    $this->assertTrue(($obj->getCountArrayItems([]) == 0 ));
+    $this->assertTrue(($obj->getCountArrayItems() == 0 ));
     unset($obj);
 
     // 6 elements in the array
     $obj = new Purencool\Search\SearchGetters($testObj::defaultArray());
-    $this->assertTrue(($obj->getCountArrayItems($testObj::defaultArray()) == 6 ));
+    $this->assertTrue(($obj->getCountArrayItems() == 6 ));
     unset($obj);
 
 
     // 18 elements in the array
-    $obj = new Purencool\Search\SearchGetters($testObj::defaultMultidimensionalArray());
-    $this->assertTrue(($obj->getCountArrayItems($testObj::defaultMultidimensionalArray()) == 18));
+    $obj = new Purencool\Search\SearchGetters();
+    $this->assertTrue(($obj->getCountArrayItems() == 18));
     unset($obj);
   }
 

@@ -50,8 +50,9 @@ class Search extends SearchAbstract implements SearchInterface {
   /**
    * @inheritDoc
    */
-  protected function countArrayItems($arr) : int
+  protected function countArrayItems() : int
   {
+    $arr =$this->searchArrayParsed;
     if(!is_array($arr) || empty($arr)){ return 0; }
     $this->setTag('iteration_count');
 
