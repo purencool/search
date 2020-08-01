@@ -103,15 +103,15 @@ class SClassAndMethodTest extends TestCase
     unset($obj);
 
     // If parameter has key it should change key element
-    //$obj = new Purencool\Search\Search($testObj,['default' => 'This should change' ]);
-    //$result = $obj->getParams();
-    //$this->assertFalse($result['default'] === 'default');
-    //unset($obj);
+    $obj = new Purencool\Search\Search($testObj,['default' => 'This should change' ]);
+    $result = $obj->getParams();
+    $this->assertFalse($result['default'] === 'default');
+    unset($obj);
 
     // If parameter has been changed it should return changed value
-   // $obj = new Purencool\Search\Search($testObj, ['default' => 'This should change' ]);
-   // $result = $obj->getParams();
-   // $this->assertTrue($result['default'] === 'This should change');
-   // unset($obj);
+    $obj = new Purencool\Search\Search($testObj, ['default' => 'This should change' ]);
+    $result = $obj->getParams();
+    $this->assertTrue($result['default'] === 'This should change');
+    unset($obj);
   }
 }
