@@ -14,7 +14,7 @@ class SGettersClassAndMethodTest extends TestCase
    */
   public function testSearchGettersClassAndMethodTest()
   {
-    $this->assertTrue(is_string('testSearchGettersClassAndMethodTest'));
+    $this->assertTrue(is_string('testSGettersClassAndMethodTest'));
   }
 
   /**
@@ -26,7 +26,7 @@ class SGettersClassAndMethodTest extends TestCase
       'getCountArrayItems',
       'getSearchStringElement',
     ];
-    $testObj = \Purencool\TestData\TestData::defaultArray();
+    $testObj = Purencool\TestData\TestData::defaultArray();
     $obj = new Purencool\Search\SearchGetters($testObj);
     foreach ($methodNamesArr as $methodNames ){
       $this->assertTrue(method_exists($obj, $methodNames));
@@ -35,18 +35,21 @@ class SGettersClassAndMethodTest extends TestCase
   }
 
 
-
-  public function testgetCountArrayItems()
+  /**
+   *
+   */
+  public function testGetCountArrayItems()
   {
-    $testObj = \Purencool\TestData\TestData::defaultArray();
+    $testObj = Purencool\TestData\TestData::defaultArray();
     $obj = new Purencool\Search\SearchGetters($testObj);
-    $this->assertTrue(is_int($obj->getCountArrayItems([])));
+    $this->assertTrue(is_int($obj->getCountArrayItems()));
     unset($obj);
   }
 
 
-
-
+  /**
+   *
+   */
   public function testGetSearchStringElement()
   {
     $testObj = Purencool\TestData\TestData::defaultArray();
