@@ -79,9 +79,10 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   protected function countArrayItems() : int
   {
-    if($this->arrValidator($this->searchArrayParsed)){
-      return 0;
-    }
+    // @todo this method is not working here either??
+    //if($this->arrValidator($this->searchArrayParsed)){
+    //  return 0;
+   // }
 
     $this->setTag('iteration_count');
 
