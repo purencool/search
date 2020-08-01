@@ -17,7 +17,7 @@ class SSearchStringElementTest extends TestCase
   {
     $obj = new Purencool\Search\SearchGetters();
     $this->assertTrue(
-      is_string($obj->getSearchStringElement(['request' => '','search' => '','type' => '']))
+      is_string($obj->getSearchStringElement(['search_request' => '','search_item' => '','type' => '']))
     );
     unset($obj);
   }
@@ -31,10 +31,8 @@ class SSearchStringElementTest extends TestCase
     */
   public function testRequestIsAString()
   {
-    $obj = new Purencool\Search\SearchGetters();
-    $testObj = new Purencool\TestData\TestData();
-    $this->assertTrue(is_string($obj->getSearchStringElement(['request',$testObj::defaultString()])));
-    $this->assertTrue(($obj->getSearchStringElement(['request', $testObj::defaultArray()]) === ''));
+    $obj = new Purencool\Search\SearchGetters([],['debug' => true]);
+    $this->assertTrue(is_string($obj->getSearchStringElement(['search_request' => 'characters'])));
     unset($obj);
   }
 
@@ -48,10 +46,9 @@ class SSearchStringElementTest extends TestCase
    */
   public function testAPartialStringRequest()
   {
-    $obj = new Purencool\Search\SearchGetters();
-    $testObj = new Purencool\TestData\TestData();
-    $this->assertTrue(is_string($obj->getSearchStringElement(['unusu',$testObj::defaultString(), 'partial'])));
-    $this->assertTrue(($obj->getSearchStringElement(['unusu',$testObj::defaultString(), 'partial']) === 'unusu'));
+    $obj = new Purencool\Search\SearchGetters([],['debug' => true]);
+    $this->assertTrue(is_string($obj->getSearchStringElement(['search_request' => 'characters'])));
+    $this->assertTrue(($obj->getSearchStringElement(['search_request' => 'characters']) === 'characters'));
     unset($obj);
   }
 
@@ -66,12 +63,12 @@ class SSearchStringElementTest extends TestCase
    */
   public function testAAbsoluteStringRequest()
   {
-    $obj = new Purencool\Search\SearchGetters();
-    $testObj = new Purencool\TestData\TestData();
-    $this->assertTrue(is_string($obj->getSearchStringElement(['unusual',$testObj::defaultString(), 'absolute'])));
-    $this->assertTrue(($obj->getSearchStringElement(['unusual',$testObj::defaultString(), 'absolute']) === 'unusual'));
+    $obj = new Purencool\Search\SearchGetters([],['debug' => true]);
+    $this->assertTrue(is_string($obj->getSearchStringElement(['search_request' => 'unusual','type' => 'absolute'])));
+    $this->assertTrue(($obj->getSearchStringElement(['search_request' => 'unusual','type' => 'absolute']) === 'unusual'));
     unset($obj);
   }
+
 
   /**
    * @see \Purencool\Search\SearchAbstract::searchStringElement()
@@ -81,10 +78,9 @@ class SSearchStringElementTest extends TestCase
    */
   public function testResultDoesNotExist()
   {
-    $obj = new Purencool\Search\SearchGetters();
-    $testObj = new Purencool\TestData\TestData();
-    $this->assertTrue(is_string($obj->getSearchStringElement(['unusually',$testObj::defaultString(), 'absolute'])));
-    $this->assertTrue(($obj->getSearchStringElement(['unusually',$testObj::defaultArray(), 'absolute']) === ''));
+    $obj = new Purencool\Search\SearchGetters([],['debug' => true]);
+    $this->assertTrue(is_string($obj->getSearchStringElement(['search_request' => 'unusually','type' => 'absolute'])));
+    $this->assertTrue(($obj->getSearchStringElement(['search_request' => 'unusually','type' => 'absolute']) === ''));
     unset($obj);
   }
 

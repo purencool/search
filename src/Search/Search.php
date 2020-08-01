@@ -44,13 +44,16 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   private function arrValidator($arr, $keyCheck = []) : bool
   {
+
     if(!is_array($arr) || empty($arr)){
       return false;
     }
 
-    foreach ($keyCheck as $keyCheckV){
-      if(isset($arr[$keyCheckV])) {
+    if(!empty($keyCheck)) {
+      foreach ($keyCheck as $keyCheckV) {
+        if (isset($arr[$keyCheckV])) {
           return false;
+        }
       }
     }
 
@@ -99,9 +102,15 @@ class Search extends SearchAbstract implements SearchInterface {
    */
   protected function searchStringElement($param) : string
   {
-    if($this->arrValidator($param)){
-      return '';
+    // @todo error catching is working for this method
+    //if($this->arrValidator($param)){
+     // return '';
+    //}
+
+    if($this->param['debug'] == true) {
+      return WorkerStringFinder::find($param, $this->debugSearchString);
     }
+
     return WorkerStringFinder::find($param);
   }
 

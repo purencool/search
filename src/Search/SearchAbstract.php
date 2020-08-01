@@ -35,8 +35,19 @@ abstract class SearchAbstract
      'default' => 'default',
      'tagging__key' => '',
      'search_metadata__key' => 'items_metadata',
-     'search_item__key' => ''
+     'search_item__key' => '',
+     'debug' => false
     ];
+
+
+  /**
+   * Search string used in testing
+   *
+   * @var string
+   */
+  protected $debugSearchString = 'This string is design to test use in tests. I am now going 
+            to add unusual characters now for testing purposes. 
+            \n\r <br/> <scrip></scrip> !@#$%^&*()<>?//\\ ';
 
 
   /**
@@ -99,19 +110,18 @@ abstract class SearchAbstract
    *  Matches Params keys and alters elements strings
    *  if the keys do match
    *
-   * @param $param
+   * @param array $param
    *
    */
-  private function paramAlter($param)
+  public function paramAlter($param)
   {
     foreach($param as $key => $value) {
-      foreach($this->param as $globalKey => $globalValue) {
-        if($key === $globalKey){
-          $this->param[$globalKey] = $value;
-        }
+      if(isset($this->param[$key])) {
+        $this->param[$key] = $value;
       }
     }
   }
+
 
   /**
    * Neede for loading
@@ -163,8 +173,8 @@ abstract class SearchAbstract
    * 1. Use of php functions to check if request is correct
    *
    * @param $param = array [
-   *   'request', // The request string that is to be found in $search
-   *   'search', // A string that is being searched
+   *   'search_request', // The request string that is to be found in $search
+   *   'search_item', // A string that is being searched
    *   'type' // This is used to set the type of search and it defaults to partial
    * ];
    *
@@ -195,7 +205,8 @@ abstract class SearchAbstract
    *    - searchArrayForElementResult
    *
    * @param array $param = [
-   *  'search_request', 'meta_information'
+   *  'search_request',
+   *  'meta_information'
    * ];
    *
    * @return array
