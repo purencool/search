@@ -3,14 +3,14 @@
     "description": "PHP Search",
     "keywords": ["template", "composer", "package"],
     "license": "GPL-3.0",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "authors": [
         {
             "name": "Purencool",
             "email": "purencool@gmail.com"
         }
     ],
-    "type": "project",
+    "type": "library",
     "require": {
 		"php": "*"
     },
