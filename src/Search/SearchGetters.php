@@ -52,7 +52,8 @@ class SearchGetters extends Search
    * @see \Purencool\Search\Search::searchArrayForElement()
    *
    * @param array $param = [
-   *  'search_request', 'meta_information'
+   *  'search_request',
+   *  'meta_information'
    * ];
    *
    * @return array

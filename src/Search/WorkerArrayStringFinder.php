@@ -19,6 +19,7 @@ class WorkerArrayStringFinder
    *   'search_arr',
    *   'search_request',
    *   'meta_information'
+   *   'key_path' => []
    *   'tag'
    *  ];
    *
@@ -29,6 +30,7 @@ class WorkerArrayStringFinder
   {
     $results = [];
     foreach($param['search_arr'] as $k => $v) {
+      $param['key_path'][] = $k;
       if(is_array($v)){
         $recursionParams = [
           'search_arr' => $param['search_arr'][$k],
@@ -37,9 +39,15 @@ class WorkerArrayStringFinder
         ];
         $results[$k] = self::find( $recursionParams);
       } else {
-        $searchParam =['search_request' => $param['search_request'], 'search_item' => $v];
+        $searchParam =['search_request' => $param['search_request'], 'search_item' => $v, 'key_path' => $param['key_path']];
         if(WorkerStringFinder::find( $searchParam) != '') {
-          $results[][$param['tag']] = $v;
+          $results[$param['tag']] = true;
+          $results[] = $v;
+          $results['meta_data'] =[
+            'search_request' => $param['search_request'],
+            'array_found' => $param['search_arr'],
+            'key_path' => $param['key_path']
+          ];
         }
       }
     }

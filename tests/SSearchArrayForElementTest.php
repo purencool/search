@@ -37,16 +37,12 @@ class SSearchArrayForElementTest extends TestCase
    */
   public function testSearchArrayForElement()
   {
-    $testObj = Purencool\TestData\TestData::defaultArray();
+    $testObj = Purencool\TestData\TestData::defaultMultidimensionalArray();
     $obj = new Purencool\Search\SearchGetters($testObj);
-    $objTest = new Purencool\TestData\TestData();
 
-    // Response 2
-    $this->assertTrue(empty($obj->getSearchArrayForElement('request', [], false)));
-
-    // Response 1
-    $this->assertTrue(!empty($obj->getSearchArrayForElement('unusually',$objTest::defaultArray(), false )));
-    $this->assertTrue(empty($obj->getSearchArrayForElement('unusually111111',$objTest::defaultArray(), false )));
+    // Response 1 and  Response 2
+    $this->assertTrue(empty($obj->getSearchArrayForElement( ['search_request' => 'unusually'])));
+    $this->assertTrue(!empty($obj->getSearchArrayForElement(['search_request' => 'five'])));
     unset($obj);
   }
 }
