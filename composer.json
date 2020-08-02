@@ -3,6 +3,7 @@
     "description": "PHP Search",
     "keywords": ["template", "composer", "package"],
     "license": "GPL-3.0",
+    "minimum-stability": "dev",
     "authors": [
         {
             "name": "Purencool",
