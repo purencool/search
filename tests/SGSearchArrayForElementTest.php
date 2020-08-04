@@ -6,7 +6,7 @@ use PHPUnit\Framework\TestCase;
  *
  *  @author Purencool
  */
-class SSearchArrayForElementTest extends TestCase
+class SGSearchArrayForElementTest extends TestCase
 {
 
 

@@ -124,14 +124,10 @@ class Search extends SearchAbstract implements SearchInterface {
     if($this->arrValidator($param,['search_request','meta_information'])){
       return [];
     }
-
     $this->setTag('items_found');
-
     $param['search_arr'] = $this->searchArrayParsed;
     $param['tag'] = $this->param['tagging__key'];
-
     $rawResults = WorkerArrayStringFinder::find($param); // raw results;
-
     return WorkerSortArray::find($rawResults);
 
   }
@@ -150,7 +146,10 @@ class Search extends SearchAbstract implements SearchInterface {
   public function getSearchResults($param) : array
   {
     if($this->arrValidator($param)){
-      return [];
+      return [
+        'count_array_items' =>  $this->countArrayItems(),
+        'found_array_items' =>  $this->searchArrayForElement($param)
+      ];
     }
     return [];
   }
