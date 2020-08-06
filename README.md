@@ -25,6 +25,9 @@ Purencool Search
 If the tests are not working run the command below.   
 `composer dump-autoload` 
 
+See global variables
+`php -S localhost:8000`
+`http://localhost:8000/info.php`
 
 
 #### Contributors
