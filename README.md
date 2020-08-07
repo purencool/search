@@ -9,20 +9,24 @@ Purencool Search
 * Comprehensive Guides and tutorial
 * Easy to use to any framework or even a plain php file
 
-#### Installation
-`composer update` installs the vendor
+### Installation 
+`composer require purencool/search`
+
+### How to use the library
 
 
-#### How to use the library
+### Development
+Clone the directory
+`git clone https://github.com/purencool/search.git`
+
+Installs the vendor directory
+`composer update`
 
 
-#### See examples
- `./vendor/bin/dephpugger server`
-
-
+#### See working examples
+`./vendor/bin/dephpugger server` or `php -S localhost:8000` then navigate to the browser.
 
 #### Unit tests
-  
 `./vendor/bin/phpunit` runs PHPUnit tests
 
 
@@ -30,9 +34,6 @@ Purencool Search
 If the tests are not working run the command below.   
 `composer dump-autoload` 
 
-See global variables
-`php -S localhost:8000`
-`http://localhost:8000/info.php`
 
 
 #### Contributors
