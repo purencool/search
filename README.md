@@ -39,8 +39,7 @@ Installs the vendor directory
 `composer install`
 
 ### Debugging
-1. Install [xdebug](https://xdebug.org/docs/install)
-2. 
+1. Install [xdebug](https://xdebug.org/docs/install) 
 2. In the root directory of the library from the terminal run `./vendor/bin/dephpugger server` you should see a server start
 3. In the index.php file uncomment `xdebug_break();` function
 4. Open another terminal navigate to root directory of the library and run  `./vendor/bin/dephpugger  debug` it should start listening
