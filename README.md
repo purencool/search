@@ -32,13 +32,11 @@ Purencool Search
 4. Xdebug
 5. Dephpugger
 
-Clone the directory
-`git clone https://github.com/purencool/search.git`
+#### Installation
+* Clone the directory `git clone https://github.com/purencool/search.git`
+* Install the vendor directory `composer install`
 
-Installs the vendor directory
-`composer install`
-
-### Debugging
+#### Debugging
 1. Install [xdebug](https://xdebug.org/docs/install) 
 2. In the root directory of the library from the terminal run `./vendor/bin/dephpugger server` you should see a server start
 3. In the index.php file uncomment `xdebug_break();` function
