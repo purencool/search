@@ -39,7 +39,7 @@ class SSearchGetSearchResultsTest extends TestCase
    */
   public function testAPartialStringRequest()
   {
-    xdebug_break(); # <-- Add this line
+   // xdebug_break(); # <-- Add this line
     $testObj = new Purencool\TestData\TestData();
     $obj = new Purencool\Search\Search($testObj::defaultArray());
 

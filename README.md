@@ -10,14 +10,19 @@ Purencool Search
 * Easy to use to any framework or even a plain php file
 
 #### Installation
-
+`composer update` installs the vendor
 
 
 #### How to use the library
 
 
+#### See examples
+ `./vendor/bin/dephpugger server`
+
+
+
 #### Unit tests
-`composer update` installs the vendor directory   
+  
 `./vendor/bin/phpunit` runs PHPUnit tests
 
 

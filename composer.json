@@ -13,19 +13,17 @@
     "type": "library",
     "require": {
 		"php": "*",
-        "tacnoman/dephpugger": "dev-master"
     },
     "require-dev": {
-		"phpunit/phpunit": "7.*"
+		"phpunit/phpunit": "7.*",
+        "tacnoman/dephpugger": "dev-master"
     },
-
 
     "autoload": {
         "psr-4": {
             "Purencool\\": "src"
         }
     },
-
     "autoload-dev": {
         "psr-4": {
             "Purencool\\": "tests"
