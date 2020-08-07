@@ -12,7 +12,8 @@
     ],
     "type": "library",
     "require": {
-		"php": "*"
+		"php": "*",
+        "tacnoman/dephpugger": "dev-master"
     },
     "require-dev": {
 		"phpunit/phpunit": "7.*"
