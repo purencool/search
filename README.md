@@ -9,18 +9,46 @@ Purencool Search
 * Comprehensive Guides and tutorial
 * Easy to use to any framework or even a plain php file
 
+
 ### Installation 
+#### Dependencies
+1. Composer
+2. PHP  
+
 `composer require purencool/search`
+
+
 
 ### How to use the library
 
 
+
+
 ### Development
+#### Dependencies
+1. Composer
+2. PHP  
+3. PHPUnit
+4. Xdebug
+5. Dephpugger
+
 Clone the directory
 `git clone https://github.com/purencool/search.git`
 
 Installs the vendor directory
-`composer update`
+`composer install`
+
+### Debugging
+1. Install [xdebug](https://xdebug.org/docs/install)
+2. 
+2. In the root directory of the library from the terminal run `./vendor/bin/dephpugger server` you should see a server start
+3. In the index.php file uncomment `xdebug_break();` function
+4. Open another terminal navigate to root directory of the library and run  `./vendor/bin/dephpugger  debug` it should start listening
+5. Go to the browser [localhost:8888](http://localhost:8888) the page will load but won't resolve.
+6. Go back to the terminal where you enter this command `./vendor/bin/dephpugger  debug` you should see `Connected to XDebug server!`
+7. To navigate the debugger navigate to [dephpugger comands-after-run](https://github.com/tacnoman/dephpugger#comands-after-run)
+
+                     
 
 
 #### See working examples
