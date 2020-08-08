@@ -128,15 +128,7 @@ class Search extends SearchAbstract implements SearchInterface {
     $this->setTag('items_found');
     $param['search_arr'] = $this->searchArrayParsed;
     $param['tag'] = $this->param['tagging__key'];
-   // if(isset($param['method_test'])){
-    //  print_r($param);
-    //  exit;
-   //   $rawResults = WorkerArrayStringFinder::find($param); // raw results;
-   //   return WorkerSortArray::find($rawResults);
-
-   // }
-
-    $rawResults = WorkerArrayStringFinder::find($param); // raw results;
+    $rawResults = WorkerArrayStringFinder::find($param);
     return WorkerSortArray::find($rawResults);
 
   }

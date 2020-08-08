@@ -5,7 +5,7 @@ namespace Purencool\Search;
 
 /**
  * The SearchGetters class extends Search so that protected methods can be tested
- * or used as example for others uses.
+ * or used as examples for others uses.
  *
  * @author Purencool
  * @license GPLV3
