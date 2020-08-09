@@ -9,17 +9,37 @@ use PHPUnit\Framework\TestCase;
 class SGSearchStringElementTest extends TestCase
 {
 
+  /**
+   * @var \Purencool\Search\SearchGetters
+   */
+  protected $obj;
+
+  /**
+   *
+   */
+  protected function setUp() : void
+  {
+    $this->obj = new Purencool\Search\SearchGetters([],['debug' => true]);
+  }
+
+  /**
+   *
+   */
+  protected function tearDown() : void
+  {
+    $this->obj = null;
+  }
+
 
   /**
    * Check method
    */
   public function testSearchStringElement()
   {
-    $obj = new Purencool\Search\SearchGetters();
+
     $this->assertTrue(
-      is_string($obj->getSearchStringElement(['search_request' => '','search_item' => '','type' => '']))
+      is_string($this->obj->getSearchStringElement(['search_request' => '','search_item' => '','type' => '']))
     );
-    $obj = null;
   }
 
    /**
@@ -31,9 +51,8 @@ class SGSearchStringElementTest extends TestCase
     */
   public function testRequestIsAString()
   {
-    $obj = new Purencool\Search\SearchGetters([],['debug' => true]);
-    $this->assertTrue(is_string($obj->getSearchStringElement(['search_request' => 'characters'])));
-    $obj = null;
+    $this->assertTrue(is_string($this->obj->getSearchStringElement(['search_request' => 'characters'])));
+
   }
 
   /**
@@ -46,10 +65,9 @@ class SGSearchStringElementTest extends TestCase
    */
   public function testAPartialStringRequest()
   {
-    $obj = new Purencool\Search\SearchGetters([],['debug' => true]);
-    $this->assertTrue(is_string($obj->getSearchStringElement(['search_request' => 'characters'])));
-    $this->assertTrue(($obj->getSearchStringElement(['search_request' => 'characters']) === 'characters'));
-    $obj = null;
+    $this->assertTrue(is_string($this->obj->getSearchStringElement(['search_request' => 'characters'])));
+    $this->assertTrue(($this->obj->getSearchStringElement(['search_request' => 'characters']) === 'characters'));
+  
   }
 
 
@@ -63,10 +81,8 @@ class SGSearchStringElementTest extends TestCase
    */
   public function testAAbsoluteStringRequest()
   {
-    $obj = new Purencool\Search\SearchGetters([],['debug' => true]);
-    $this->assertTrue(is_string($obj->getSearchStringElement(['search_request' => 'unusual','type' => 'absolute'])));
-    $this->assertTrue(($obj->getSearchStringElement(['search_request' => 'unusual','type' => 'absolute']) === 'unusual'));
-    $obj = null;
+    $this->assertTrue(is_string($this->obj->getSearchStringElement(['search_request' => 'unusual','type' => 'absolute'])));
+    $this->assertTrue(($this->obj->getSearchStringElement(['search_request' => 'unusual','type' => 'absolute']) === 'unusual'));
   }
 
 
@@ -78,14 +94,13 @@ class SGSearchStringElementTest extends TestCase
    */
   public function testResultDoesNotExist()
   {
-    $obj = new Purencool\Search\SearchGetters([],['debug' => true]);
-    $this->assertTrue(is_string($obj->getSearchStringElement(['search_request' => 'unusually','type' => 'absolute'])));
-    $this->assertTrue(($obj->getSearchStringElement(['search_request' => 'design','type' => 'absolute']) !== ''));
-    $this->assertTrue(($obj->getSearchStringElement(['search_request' => 'string is design to test','type' => 'absolute']) !== ''));
-    $this->assertTrue(($obj->getSearchStringElement(['search_request' => 'unusually','type' => 'absolute']) === ''));
+    $this->assertTrue(is_string($this->obj->getSearchStringElement(['search_request' => 'unusually','type' => 'absolute'])));
+    $this->assertTrue(($this->obj->getSearchStringElement(['search_request' => 'design','type' => 'absolute']) !== ''));
+    $this->assertTrue(($this->obj->getSearchStringElement(['search_request' => 'string is design to test','type' => 'absolute']) !== ''));
+    $this->assertTrue(($this->obj->getSearchStringElement(['search_request' => 'unusually','type' => 'absolute']) === ''));
 
-    $this->assertTrue(($obj->getSearchStringElement(['search_request' => 'string is design to test','type' => 'partial']) !== ''));
-    $obj = null;
+    $this->assertTrue(($this->obj->getSearchStringElement(['search_request' => 'string is design to test','type' => 'partial']) !== ''));
+ 
   }
 
 }

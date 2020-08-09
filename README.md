@@ -52,7 +52,9 @@ Purencool Search
 `./vendor/bin/dephpugger server` or `php -S localhost:8000` then navigate to the browser.
 
 #### Unit tests
-`./vendor/bin/phpunit` runs PHPUnit tests
+`./vendor/bin/phpunit` runs all PHPUnit tests
+`./vendor/bin/phpunit --filter <methodNameInClass>` run one set of tests
+
 
 
 #### Troubleshooting

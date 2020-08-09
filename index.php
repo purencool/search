@@ -14,6 +14,7 @@ echo '<p>The examples below show searches used in the PHPUnit tests.
          </p>';
 include_once "./examples/example_one.php";
 include_once "./examples/example_two.php";
+include_once "./examples/example_three.php";
 
 
 include_once "./examples/footer.php";

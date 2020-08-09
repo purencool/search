@@ -9,7 +9,6 @@ use PHPUnit\Framework\TestCase;
 class SSearchGetSearchResultsTest extends TestCase
 {
 
-
   /**
    * Check method
    */
@@ -72,7 +71,7 @@ class SSearchGetSearchResultsTest extends TestCase
   public function testMultiArrayString()
   {
     $testObj = new Purencool\TestData\TestData();
-   $obj = new Purencool\Search\Search($testObj::defaultMultidimensionalArray());
+    $obj = new Purencool\Search\Search($testObj::defaultMultidimensionalArray());
 
 
     // Finds all words that are in the string and are in the element
