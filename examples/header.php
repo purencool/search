@@ -21,6 +21,14 @@ echo '<style>
          h1,h2,h3{
          padding-top:40px;
          }
+         
+         .clear-both{
+           clear:both;
+         }
+         
+         .p-t-20{
+           padding-top: 20px;
+         }
        
       </style>';
 echo '<body><div class="container wrapper"><div class="row"><div class="col-xs-1 center-block">';

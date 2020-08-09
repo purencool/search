@@ -39,13 +39,13 @@ class SSearchGetSearchResultsTest extends TestCase
    */
   public function testAPartialStringRequest()
   {
-   // xdebug_break(); # <-- Add this line
-    $testObj = new Purencool\TestData\TestData();
-    $obj = new Purencool\Search\Search($testObj::defaultArray());
 
-    $this->assertTrue(empty(is_array($obj->getSearchResults(['search_request' => 'characters', 'method_test' => '']))));
-    $this->assertTrue(($obj->getSearchResults(['search_request' => 'five'])['found_array_items'][0]['items_found'] == 1));
-    unset($obj);
+    $testObj = new Purencool\TestData\TestData();
+    $objSearch = new Purencool\Search\Search($testObj::defaultArray());
+    $this->assertTrue(is_array($objSearch->getSearchResults(['search_request' => 'characters'])['items_found']));
+    $this->assertTrue(empty($objSearch->getSearchResults(['search_request' => 'characters'])['items_found']));
+    $this->assertTrue(($objSearch->getSearchResults(['search_request' => 'five'])['items_found'][0]['items_found'] == 1));
+    unset($objSearch);
   }
 
 }

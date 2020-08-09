@@ -5,7 +5,7 @@ include_once "./vendor/autoload.php";
 $testObj = new Purencool\TestData\TestData();
 include_once "./examples/header.php";
 
-echo '<h2>Example Searches</h2>';
+echo '<h2>Example PHPUnit created searches</h2>';
 echo '<hr/>';
 echo '<p>The examples below show searches used in the PHPUnit tests. 
           If you want to debug one of the array examples, you can use "./vendor/bin/dephpugger". 

@@ -148,11 +148,18 @@ class Search extends SearchAbstract implements SearchInterface {
   {
     if($this->arrValidator($param)){
       return [
-        'count_array_items' =>  $this->countArrayItems(),
-        'found_array_items' =>  $this->searchArrayForElement($param)
+        'items_counted' =>  $this->countArrayItems(),
+        'items_found' =>  $this->searchArrayForElement($param)
       ];
     }
     return [];
   }
 
+  /**
+   * @inheritDoc
+   */
+  public function __destruct()
+  {
+    parent::__destruct();
+  }
 }

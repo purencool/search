@@ -91,6 +91,17 @@ abstract class SearchAbstract
 
 
   /**
+   * Destruct arrays and return them to default;
+   */
+   public function __destruct()
+   {
+     foreach ($this as $key => $value) {
+       unset($this->$key);
+     }
+   }
+
+
+  /**
    * SearchAbstract constructor.
    * @param array $searchArray loads array to be searched
    * @param array $param overrides default parameters
