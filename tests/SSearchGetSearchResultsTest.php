@@ -71,7 +71,6 @@ class SSearchGetSearchResultsTest extends TestCase
    */
   public function testMultiArrayString()
   {
-
     $testObj = new Purencool\TestData\TestData();
     $objSearch = new Purencool\Search\Search($testObj::defaultMultidimensionalArray());
 
@@ -81,16 +80,7 @@ class SSearchGetSearchResultsTest extends TestCase
     foreach ($objSearch->getSearchResults(['search_request' => 'My data number three'])['items_found'] as $value){
       $x++;
     }
-    $this->assertTrue(($x == 9));
-
-    // Does a exact match and only finds the search string
-    $j = null;
-    foreach ($objSearch->getSearchResults(['search_request' => 'My data number three', 'type' => 'absolute'])['items_found'] as $value){
-      $j++;
-    }
-    $this->assertTrue(($j == 1));
-
-
+    $this->assertTrue(($x == 1));
     unset($objSearch);
   }
 
