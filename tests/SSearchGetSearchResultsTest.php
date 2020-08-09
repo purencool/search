@@ -48,4 +48,40 @@ class SSearchGetSearchResultsTest extends TestCase
     unset($objSearch);
   }
 
+  /**
+   *
+   */
+  public function testMultiArrayWord()
+  {
+
+    $testObj = new Purencool\TestData\TestData();
+    $objSearch = new Purencool\Search\Search($testObj::defaultMultidimensionalArray());
+
+    $x = null;
+    foreach ($objSearch->getSearchResults(['search_request' => 'four'])['items_found'] as $value){
+      $x++;
+    }
+
+    $this->assertTrue(($x == 8));
+    unset($objSearch);
+  }
+
+  /**
+   *
+   */
+  public function testMultiArrayString()
+  {
+
+    $testObj = new Purencool\TestData\TestData();
+    $objSearch = new Purencool\Search\Search($testObj::defaultMultidimensionalArray());
+    $x = null;
+    foreach ($objSearch->getSearchResults(['search_request' => 'My data number three'])['items_found'] as $value){
+      $x++;
+    }
+
+    $this->assertTrue(($x == 1));
+    unset($objSearch);
+  }
+
+
 }
