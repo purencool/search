@@ -80,6 +80,8 @@ class SGSearchStringElementTest extends TestCase
   {
     $obj = new Purencool\Search\SearchGetters([],['debug' => true]);
     $this->assertTrue(is_string($obj->getSearchStringElement(['search_request' => 'unusually','type' => 'absolute'])));
+    $this->assertTrue(($obj->getSearchStringElement(['search_request' => 'design','type' => 'absolute']) !== ''));
+    $this->assertTrue(($obj->getSearchStringElement(['search_request' => 'string is design to test','type' => 'absolute']) !== ''));
     $this->assertTrue(($obj->getSearchStringElement(['search_request' => 'unusually','type' => 'absolute']) === ''));
     unset($obj);
   }
