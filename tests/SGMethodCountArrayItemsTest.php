@@ -28,7 +28,7 @@ class SearchcountArrayItemsTest extends TestCase
     $testObj = Purencool\TestData\TestData::defaultArray();
     $obj = new Purencool\Search\SearchGetters($testObj);
     $this->assertTrue(is_int($obj->getCountArrayItems([])));
-    unset($obj);
+    $obj = null;
   }
 
   /**
@@ -45,18 +45,18 @@ class SearchcountArrayItemsTest extends TestCase
     // 0 elements in the array
     $obj = new Purencool\Search\SearchGetters([]);
     $this->assertTrue(($obj->getCountArrayItems() == 0 ));
-    unset($obj);
+    $obj = null;
 
     // 6 elements in the array
     $obj = new Purencool\Search\SearchGetters($testObj::defaultArray());
     $this->assertTrue(($obj->getCountArrayItems() == 6 ));
-    unset($obj);
+    $obj = null;
 
 
     // 18 elements in the array
     $obj = new Purencool\Search\SearchGetters($testObj::defaultMultidimensionalArray());
     $this->assertTrue(($obj->getCountArrayItems() == 18));
-    unset($obj);
+    $obj = null;
   }
 
 }

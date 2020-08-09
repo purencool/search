@@ -26,6 +26,6 @@ class DataTest extends TestCase
     $this->assertTrue(is_string($obj::defaultString()));
     $this->assertTrue(is_array($obj::defaultArray()));
     $this->assertTrue(is_array($obj::defaultMultidimensionalArray()));
-    unset($obj);
+    $obj = null;
   }
 }

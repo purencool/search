@@ -19,7 +19,7 @@ class SSearchGetSearchResultsTest extends TestCase
     $this->assertTrue(
       is_array($obj->getSearchResults(['search_request' => '','search_item' => '','type' => '']))
     );
-    unset($obj);
+    $obj = null;
   }
 
    /**
@@ -31,7 +31,7 @@ class SSearchGetSearchResultsTest extends TestCase
   {
     $obj = new Purencool\Search\Search([],['debug' => true]);
     $this->assertTrue(is_array($obj->getSearchResults(['search_request' => 'characters'])));
-    unset($obj);
+    $obj = null;
   }
 
   /**
@@ -41,11 +41,11 @@ class SSearchGetSearchResultsTest extends TestCase
   {
 
     $testObj = new Purencool\TestData\TestData();
-    $objSearch = new Purencool\Search\Search($testObj::defaultArray());
-    $this->assertTrue(is_array($objSearch->getSearchResults(['search_request' => 'characters'])['items_found']));
-    $this->assertTrue(empty($objSearch->getSearchResults(['search_request' => 'characters'])['items_found']));
-    $this->assertTrue(($objSearch->getSearchResults(['search_request' => 'five'])['items_found'][0]['items_found'] == 1));
-    unset($objSearch);
+    $obj = new Purencool\Search\Search($testObj::defaultArray());
+    $this->assertTrue(is_array($obj->getSearchResults(['search_request' => 'characters'])['items_found']));
+    $this->assertTrue(empty($obj->getSearchResults(['search_request' => 'characters'])['items_found']));
+    $this->assertTrue(($obj->getSearchResults(['search_request' => 'five'])['items_found'][0]['items_found'] == 1));
+    $obj = null;
   }
 
   /**
@@ -55,15 +55,15 @@ class SSearchGetSearchResultsTest extends TestCase
   {
 
     $testObj = new Purencool\TestData\TestData();
-    $objSearch = new Purencool\Search\Search($testObj::defaultMultidimensionalArray());
+    $obj = new Purencool\Search\Search($testObj::defaultMultidimensionalArray());
 
     $x = null;
-    foreach ($objSearch->getSearchResults(['search_request' => 'four'])['items_found'] as $value){
+    foreach ($obj->getSearchResults(['search_request' => 'four'])['items_found'] as $value){
       $x++;
     }
 
     $this->assertTrue(($x == 8));
-    unset($objSearch);
+    $obj = null;
   }
 
   /**
@@ -72,16 +72,16 @@ class SSearchGetSearchResultsTest extends TestCase
   public function testMultiArrayString()
   {
     $testObj = new Purencool\TestData\TestData();
-    $objSearch = new Purencool\Search\Search($testObj::defaultMultidimensionalArray());
+   $obj = new Purencool\Search\Search($testObj::defaultMultidimensionalArray());
 
 
     // Finds all words that are in the string and are in the element
     $x = null;
-    foreach ($objSearch->getSearchResults(['search_request' => 'My data number three'])['items_found'] as $value){
+    foreach ($obj->getSearchResults(['search_request' => 'My data number three'])['items_found'] as $value){
       $x++;
     }
     $this->assertTrue(($x == 1));
-    unset($objSearch);
+    $obj = null;
   }
 
 

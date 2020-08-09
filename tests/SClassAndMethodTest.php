@@ -26,7 +26,7 @@ class SClassAndMethodTest extends TestCase
     $obj = new Purencool\Search\Search($testObj);
     $interfaces = class_implements($obj);
     $this->assertTrue(isset($interfaces['Purencool\Search\SearchInterface']));
-    unset($obj);
+    $obj = null;
   }
 
 
@@ -39,7 +39,7 @@ class SClassAndMethodTest extends TestCase
     $obj = new Purencool\Search\Search($testObj);
     $interfaces = class_parents($obj);
     $this->assertTrue(isset($interfaces['Purencool\Search\SearchAbstract']));
-    unset($obj);
+    $obj = null;
   }
 
 
@@ -51,7 +51,7 @@ class SClassAndMethodTest extends TestCase
     $testObj = Purencool\TestData\TestData::defaultArray();
     $obj = new Purencool\Search\Search($testObj);
 	 $this->assertTrue(is_object($obj));
-	 unset($obj);
+	 $obj = null;
   }
 
   /**
@@ -70,7 +70,7 @@ class SClassAndMethodTest extends TestCase
     foreach ($methodNamesArr as $methodNames ){
       $this->assertTrue(method_exists($obj, $methodNames));
     }
-    unset($obj);
+    $obj = null;
   }
 
   /**
@@ -82,7 +82,7 @@ class SClassAndMethodTest extends TestCase
     $testObj = Purencool\TestData\TestData::defaultArray();
     $obj = new Purencool\Search\Search($testObj);
 	  $this->assertTrue(is_array($obj->getSearchResults([],'')));
-	  unset($obj);
+	  $obj = null;
   }
 
   public function testAlteringProtectedVariableParamInConstructor()
@@ -93,25 +93,25 @@ class SClassAndMethodTest extends TestCase
     $obj = new Purencool\Search\Search($testObj);
     $result = $obj->getParams();
     $this->assertTrue($result['default'] === 'default');
-    unset($obj);
+    $obj = null;
 
     // If keys don't match global it nothing should change
 
     $obj = new Purencool\Search\Search($testObj, ['not_a_global_key' => 'The result should not change' ]);
     $result = $obj->getParams();
     $this->assertTrue($result['default'] === 'default');
-    unset($obj);
+    $obj = null;
 
     // If parameter has key it should change key element
     $obj = new Purencool\Search\Search($testObj,['default' => 'This should change' ]);
     $result = $obj->getParams();
     $this->assertFalse($result['default'] === 'default');
-    unset($obj);
+    $obj = null;
 
     // If parameter has been changed it should return changed value
     $obj = new Purencool\Search\Search($testObj, ['default' => 'This should change' ]);
     $result = $obj->getParams();
     $this->assertTrue($result['default'] === 'This should change');
-    unset($obj);
+    $obj = null;
   }
 }

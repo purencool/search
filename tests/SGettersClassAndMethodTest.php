@@ -31,7 +31,7 @@ class SGettersClassAndMethodTest extends TestCase
     foreach ($methodNamesArr as $methodNames ){
       $this->assertTrue(method_exists($obj, $methodNames));
     }
-    unset($obj);
+    $obj = null;
   }
 
 
@@ -43,7 +43,7 @@ class SGettersClassAndMethodTest extends TestCase
     $testObj = Purencool\TestData\TestData::defaultArray();
     $obj = new Purencool\Search\SearchGetters($testObj);
     $this->assertTrue(is_int($obj->getCountArrayItems()));
-    unset($obj);
+    $obj = null;
   }
 
 
@@ -57,7 +57,7 @@ class SGettersClassAndMethodTest extends TestCase
     $this->assertTrue(
       is_string($obj->getSearchStringElement([]))
     );
-    unset($obj);
+    $obj = null;
   }
 
 
@@ -70,7 +70,7 @@ class SGettersClassAndMethodTest extends TestCase
     $obj->setParams(['over write the params array']);
     $result = $obj->getParams();
     $this->assertTrue($result[0] === 'over write the params array');
-    unset($obj);
+    $obj = null;
   }
 
 }
