@@ -17,11 +17,13 @@ Purencool Search
 
 `composer require purencool/search`
 
-
-
 ### How to use the library
 
-
+After installation in the simplest way to use the is library the following:
+`
+$obj = new Purencool\Search\Search([array of my choice]);
+$results= $obj->getSearchResults(['search_request' => 'string I am serchig for]);
+`
 
 
 ### Development
