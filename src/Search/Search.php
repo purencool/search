@@ -2,6 +2,7 @@
 
 namespace Purencool\Search;
 
+use Purencool\Helpers\WorkerArrayStringFinder;
 
 /**
  *  Search
