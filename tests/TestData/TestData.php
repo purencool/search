@@ -72,28 +72,41 @@ class TestData
     ];
   }
 
+  /**
+   * Default test data to be used in TDD
+   */
+  public static function defaultMultidimensionalArrayWithObjects()
+  {
+    return [
+      '0q My data',
+      '1q My data number two',
+      '2q My data number three',
+      [
+        (object) array('a'=>'A object aaaaa', 'b'=>'B object bbbbb', 'C object cccc'),
+        '4q My data number five level one',
+        '5q My data number six level one',
+      ],
+      '6q My data number four',
+      '7q My data number five',
+      '8q My data number six',
+      [
+        '9q Second My data number four level one',
+        '10q Second My data number five level one',
+        [
+          (object) array('a'=>'A object aaaaa one', 'b'=>'B object bbbbb one', 'C object cccc one'),
+          '12q  Second My data number five level two',
+          [
+            '13q Second My data number four level three',
+            '14q Second My data number five level three',
+            [
+              (object) array('a'=>'A object aaaaa two', 'b'=>'B object bbbbb two', 'C object cccc two'),
+              '16q Second My data number five level four',
+            ],
+          ],
+        ],
+        '17q Second My data number six level one',
+      ],
+    ];
+  }
+
 }
-/*
-
-
-                    [data] => 0 My data
-                    [data] => 1 My data number two
-                    [data] => 2 My data number three
-                  3
-                  4
-                  5
-                    [data] => 6 My data number four
-                    [data] => 7 My data number five
-                    [data] => 8 My data number six
-                            [data] => 9 Second My data number four level one
-                            [data] => 10 Second My data number five level one
-[data] => 11 Second My data number four level two
-[data] => 12  Second My data number five level two
-[data] => 13 Second My data number four level three
-[data] => 14 Second My data number five level three
-[data] => 15 Second My data number four level four
-[data] => 16 Second My data number five level four
-                            [data] => 17 Second My data number six level one
-
-*/
-
