@@ -2,7 +2,13 @@
 
 namespace Purencool\Search;
 
-use Purencool\Helpers\WorkerArrayStringFinder;
+use Purencool\Helpers\ArrayStringFinder;
+use Purencool\Helpers\FlattenArray;
+use Purencool\Helpers\KeyFinder;
+use Purencool\Helpers\SetUpParser;
+use Purencool\Helpers\SortArray;
+use Purencool\Helpers\StringFinder;
+use Purencool\Helpers\UnsetEmptyArrays;
 
 /**
  *  Search
@@ -68,7 +74,7 @@ class Search extends SearchAbstract implements SearchInterface {
   protected function searchArrayInit($arr)
   {
     if($this->arrValidator($arr)){
-      $this->searchArrayParsed = WorkerSetUpParser::parseArr($arr);
+      $this->searchArrayParsed = SetUpParser::parseArr($arr);
     } else {
       $this->searchArrayParsed = ['error' => 'Array given wasn\'t empty'];
     }
@@ -87,12 +93,12 @@ class Search extends SearchAbstract implements SearchInterface {
 
     $this->setTag('iteration_count');
 
-    $this->keyFinderResults = WorkerKeyFinder::find(
+    $this->keyFinderResults = KeyFinder::find(
         $this->searchArrayParsed ,
         $this->param['tagging__key']
     );
 
-    $this->arrayFlattenResult = WorkerFlattenArray::find($this->keyFinderResults);
+    $this->arrayFlattenResult = FlattenArray::find($this->keyFinderResults);
 
     return array_sum($this->arrayFlattenResult);
 
@@ -110,10 +116,10 @@ class Search extends SearchAbstract implements SearchInterface {
     //}
 
     if($this->param['debug'] == true) {
-      return WorkerStringFinder::find($param, $this->debugSearchString);
+      return StringFinder::find($param, $this->debugSearchString);
     }
 
-    return WorkerStringFinder::find($param);
+    return StringFinder::find($param);
   }
 
 
@@ -129,8 +135,8 @@ class Search extends SearchAbstract implements SearchInterface {
     $this->setTag('items_found');
     $param['search_arr'] = $this->searchArrayParsed;
     $param['tag'] = $this->param['tagging__key'];
-    $rawResults = WorkerArrayStringFinder::find($param);
-    return WorkerSortArray::find($rawResults);
+    $rawResults = ArrayStringFinder::find($param);
+    return SortArray::find($rawResults);
 
   }
 

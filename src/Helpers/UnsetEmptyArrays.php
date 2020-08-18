@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Purencool\Search;
+namespace Purencool\Helpers;
 
 /**
  *  Search
@@ -11,7 +11,7 @@ namespace Purencool\Search;
  * @package Purencool\Search
  *
  */
-class WorkerUnsetEmptyArrays
+class UnsetEmptyArrays
 {
 
   /**

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Purencool\Search;
+namespace Purencool\Helpers;
 
 /**
  * @example
@@ -18,10 +18,10 @@ namespace Purencool\Search;
  *    ->execute();
  *
  *
- * Class WorkerArrayHelpers
+ * Class ArrayHelpers
  * @package Purencool\Search
  */
-class WorkerArrayHelpers
+class ArrayHelpers
 {
   /**
    * @var array
@@ -29,7 +29,7 @@ class WorkerArrayHelpers
   private $array;
 
   /**
-   * WorkerArrayHelpers constructor.
+   * ArrayHelpers constructor.
    * @param $array
    */
   public function __construct($array)

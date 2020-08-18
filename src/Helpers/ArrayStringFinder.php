@@ -3,7 +3,7 @@
 
 namespace Purencool\Helpers;
 
-use Purencool\Search\WorkerStringFinder;
+
 /**
  *  Search
  *
@@ -12,7 +12,7 @@ use Purencool\Search\WorkerStringFinder;
  * @package Purencool\Search
  *
  */
-class WorkerArrayStringFinder
+class ArrayStringFinder
 {
 
   /**
@@ -41,7 +41,7 @@ class WorkerArrayStringFinder
         $results[$k] = self::find($recursionParams);
       } else {
         $searchParam = ['search_request' => $param['search_request'], 'search_item' => $v, 'key_path' => $param['key_path']];
-        if (WorkerStringFinder::find($searchParam) != '') {
+        if (StringFinder::find($searchParam) != '') {
           $results[$param['tag']] = true;
           $results[] = $v;
           $results['meta_data'] = [
