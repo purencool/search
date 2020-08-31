@@ -19,7 +19,7 @@ namespace Purencool\Helpers;
  *
  *
  * Class ArrayHelpers
- * @package Purencool\Search
+ * @package Purencool\Helpers
  */
 class ArrayHelpers
 {

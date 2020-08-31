@@ -75,14 +75,17 @@ class TestData
   /**
    * Default test data to be used in TDD
    */
-  public static function defaultMultidimensionalArrayWithObjects()
+  public static function multidimensionalArrayWithObjects()
   {
+    $obj1 = (object) ['a'=>'A object aaaaa', 'b'=>'B object bbbbb', 'C object cccc four'];
+
+
     return [
       '0q My data',
       '1q My data number two',
       '2q My data number three',
       [
-        (object) array('a'=>'A object aaaaa', 'b'=>'B object bbbbb', 'C object cccc'),
+       'obj111' => $obj1,
         '4q My data number five level one',
         '5q My data number six level one',
       ],
@@ -93,13 +96,16 @@ class TestData
         '9q Second My data number four level one',
         '10q Second My data number five level one',
         [
-          (object) array('a'=>'A object aaaaa one', 'b'=>'B object bbbbb one', 'C object cccc one'),
+          (object) ['a'=>'A object aaaaa one', 'an array embed in an object'=>[
+            'aaaaaa',
+            ' four testing: this is an array element inside an Obj'
+          ], 'C object cccc one'],
           '12q  Second My data number five level two',
           [
             '13q Second My data number four level three',
             '14q Second My data number five level three',
             [
-              (object) array('a'=>'A object aaaaa two', 'b'=>'B object bbbbb two', 'C object cccc two'),
+             (object) ['a'=>'A object aaaaa two  eighteens', 'b'=>'B object bbbbb two', 'C object cccc two'],
               '16q Second My data number five level four',
             ],
           ],

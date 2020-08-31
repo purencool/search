@@ -8,8 +8,7 @@ namespace Purencool\Helpers;
  *
  * @author Purencool
  * @license GPLV3
- * @package Purencool\Search
- *
+ * @package Purencool\Helpers
  */
 class KeyFinder
 {

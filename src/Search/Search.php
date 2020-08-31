@@ -9,6 +9,7 @@ use Purencool\Helpers\SetUpParser;
 use Purencool\Helpers\SortArray;
 use Purencool\Helpers\StringFinder;
 use Purencool\Helpers\UnsetEmptyArrays;
+use Purencool\Helpers\ObjectArrayConverter;
 
 /**
  *  Search
@@ -74,9 +75,10 @@ class Search extends SearchAbstract implements SearchInterface {
   protected function searchArrayInit($arr)
   {
     if($this->arrValidator($arr)){
-      $this->searchArrayParsed = SetUpParser::parseArr($arr);
+      $objConverted = ObjectArrayConverter::convert($arr);
+      $this->searchArrayParsed = SetUpParser::parseArr($objConverted);
     } else {
-      $this->searchArrayParsed = ['error' => 'Array given wasn\'t empty'];
+      $this->searchArrayParsed = ['error' => 'Array given was empty'];
     }
   }
 
